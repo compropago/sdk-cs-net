@@ -142,7 +142,7 @@ NewOrderInfo neworder = compropagoService.placeOrder(newOrderInfo);
 
 ```CSharp
 //El número de orden que queremos verificar
-string orderId= "ch_xxxxx-xxxxx-xxxxx-xxxxx"
+string orderId= "ch_xxxxx-xxxxx-xxxxx-xxxxx";
 
 //Obtenemos la estructura de la respuesta 
 CompropagoOrderInfo response = compropagoService.verifyOrder( orderId );
@@ -156,4 +156,14 @@ CompropagoOrderInfo response = compropagoService.verifyOrder( orderId );
 List<Provider> providers = compropagoService.getProviders();
 ```
 
+##### Envio de instrucciones SMS
 
+```CSharp
+// Numero celular del cliente
+string phoneNumber = "55xxxxxxxx";
+// Numero de orden para las instrucciones
+string orderId = "ch_xxxxx-xxxxx-xxxxx-xxxxx";
+
+// Obtenemos la estructura de la respuesta
+SmsInfo smsinfo = compropagoService.sendSmsInstructions(phoneNumber, orderId);
+```
