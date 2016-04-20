@@ -25,7 +25,7 @@ namespace Compropago.Sdk
      **/
     public class Client
     {
-        public const string version = "1.0.0";
+        public const string version = "0.0.0";
         private const string apiLiveUri = "api.compropago.com/v1/";
         private const string apiSandboxUri = "api.compropago.com/v1/";
         private const string ssl = "http://";
