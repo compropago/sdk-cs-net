@@ -167,3 +167,10 @@ string orderId = "ch_xxxxx-xxxxx-xxxxx-xxxxx";
 // Obtenemos la estructura de la respuesta
 SmsInfo smsinfo = compropagoService.sendSmsInstructions(phoneNumber, orderId);
 ```
+
+##### Incluir recibo de order de pago
+
+```HTML
+// Include this tag in your page success
+<iframe href="https://www.compropago.com/comprobante/?confirmation_id=<% Response.Write(neworder.id) %>"></iframe>
+```
