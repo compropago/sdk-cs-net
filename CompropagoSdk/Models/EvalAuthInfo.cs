@@ -1,0 +1,12 @@
+﻿
+namespace CompropagoSdk.Models
+{
+    class EvalAuthInfo
+    {
+        public string type    { get; set; }
+        public bool livemode  { get; set; }
+        public bool modekey   { get; set; }
+        public string message { get; set; }
+        public int code       { get; set; }
+    }
+}

@@ -280,9 +280,34 @@ es el siguiente.
    modificada en formato JSON
 2. Debera de recuperar este JSON en una cadena de texto para posterior mente convertirla a un objeto de todpo **CpOrderInfo** haciendo uso de la clase Factory
    que proporciona el SDK de la siguiente forma:
-   ```CSharp
-   CpOrderInfo info = CompropagoSdk.Factory.Factory.cpOrderInfo( cadenaJson );
-   ```
+
+```CSharp
+CpOrderInfo info = CompropagoSdk.Factory.Factory.cpOrderInfo( cadenaJson );
+```
+
+3. Generar la logica de aprovacion correspondiente al estatus de la orden.
+
+##### Crear un nuevo Webhook
+
+Para crear un nuevo Webhook en la cuenta, se debe de llamar al metodo **createWebhook** que se encuentra alojado en el atributo **api** del objeto **Client**
+y el cual regresa una instancia de tipo **Webhook**
+
+```CSharp
+/**
+ * Se pasa como paramtro la URL al webhook
+ */
+var webhook = client.api.createWebhook("http://sitio.com/webhook");
+```
+
+###### Prototipo del metodo createWebhook()
+
+```CSharp
+/**
+ * @param string url            Url del webhook a registrar
+ * @return Webhook
+ */
+public Webhook createWebhook(string url);
+```
 
 ##### Incluir recibo de order de pago
 
