@@ -351,7 +351,7 @@ public Webhook deleteWebhook(string webhookId);
 ##### Obtener listado de Webhooks registrados
 
 Para obtener la lista de webhooks registrados den una cuenta, se debe de llamar al metodo **getWebhook** que se encuentra alojado en el atributo **api**
-del objeto **Client** y el cual regresa una instancia de tipo **List<Webhook>**
+del objeto **Client** y el cual regresa una instancia de tipo **List< Webhook >**
 
 ```CSharp
 var updateWebhook = client.api.getWebhooks();
