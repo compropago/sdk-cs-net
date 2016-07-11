@@ -309,9 +309,66 @@ var webhook = client.api.createWebhook("http://sitio.com/webhook");
 public Webhook createWebhook(string url);
 ```
 
+##### Actualizar un Webhook
+
+Para actualizar la url de un webhoo, se debe de llamar al metodo **updateWebhook** que se encuentra alojado en el atributo **api** del objeto **Client**
+y el cual regresa una instancia de tipo **Webhook**
+
+```CSharp
+var updateWebhook = client.api.updateWebhook(webhookId, newUrl);
+```
+
+###### Prototipo del metodo updateWebhook()
+
+```CSharp
+/**
+ * @param string webhookId       Id del webhook que se desea actualizar
+ * @param string url             Url nueva del webhook
+ * @return Webhook
+ */
+public Webhook updateWebhook(string webhookId, string url);
+```
+
+##### Eliminar un Webhook
+
+Para eliminar un webhook, se debe de llamar al metodo **deleteWebhook** que se encuentra alojado en el atributo **api** del objeto **Client**
+y el cual regresa una instancia de tipo **Webhook**
+
+```CSharp
+var updateWebhook = client.api.deleteWebhook(webhookId);
+```
+
+###### Prototipo del metodo deleteWebhook()
+
+```CSharp
+/**
+ * @param string webhookId       Id del webhook registrado
+ * @return Webhook
+ */
+public Webhook deleteWebhook(string webhookId);
+```
+
+##### Obtener listado de Webhooks registrados
+
+Para obtener la lista de webhooks registrados den una cuenta, se debe de llamar al metodo **getWebhook** que se encuentra alojado en el atributo **api**
+del objeto **Client** y el cual regresa una instancia de tipo **List<Webhook>**
+
+```CSharp
+var updateWebhook = client.api.getWebhooks();
+```
+
+###### Prototipo del metodo getWebhook()
+
+```CSharp
+/**
+ * @return List<Webhook>
+ */
+public List<Webhook> getWebhooks();
+```
+
 ##### Incluir recibo de order de pago
 
 ```HTML
 // Include this tag in your page success
-<iframe href="https://www.compropago.com/comprobante/?confirmation_id=<% Response.Write(neworder.id) %>"></iframe>
+<iframe href="https://www.compropago.com/comprobante/?confirmation_id=<% Response.Write(newOrder.id) %>"></iframe>
 ```
