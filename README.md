@@ -1,4 +1,4 @@
-# ComproPago SDK C#.NET v2.0.0-alfa
+# ComproPago SDK C#.NET v2.0.0
 
 ## Descripción
 
@@ -372,3 +372,13 @@ public List<Webhook> getWebhooks();
 // Include this tag in your page success
 <iframe href="https://www.compropago.com/comprobante/?confirmation_id=<% Response.Write(newOrder.id) %>"></iframe>
 ```
+
+### Gui de versiones
+| Version | Status    | Namespace        | Branch                 |
+|---------|-----------|------------------|------------------------|
+| 1.0.0   | Mantained | `Compropago\Sdk` | [1.0.0][branch-1-0-0]  |
+| 2.0.0   | Latest    | `CompropagoSdk`  | [2.0.0][branch-latest] |
+
+[branch-1-0-0]: https://github.com/compropago/sdk-cs-net/tree/1.0.0
+[branch-latest]: https://github.com/compropago/sdk-cs-net/
+
