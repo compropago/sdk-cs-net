@@ -1,8 +1,5 @@
-<<<<<<< HEAD
+
 # ComproPago SDK C#.NET v2.0.1
-=======
-# ComproPago SDK C#.NET v2.0.0
->>>>>>> a7eabcac7747e49873100971e7f1f89404cfa939
 
 ## Descripción
 
@@ -361,7 +358,7 @@ del objeto **Client** y el cual regresa una instancia de tipo **List< Webhook >*
 var updateWebhook = client.api.listWebhooks();
 ```
 
-###### Prototipo del metodo getWebhook()
+###### Prototipo del metodo listWebhook()
 
 ```CSharp
 /**
