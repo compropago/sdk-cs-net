@@ -6,7 +6,7 @@ namespace CompropagoSdk.Factory.V11
     {
         public string id { get; set; }
         public string short_id { get; set; }
-        public string obj { get; set; }
+        public string Object { get; set; }
         public string status { get; set; }
         public string created { get; set; }
         public string exp_date { get; set; }
