@@ -3,7 +3,7 @@ namespace CompropagoSdk
 {
     class Client
     {
-        private static string VERSION = "2.0.0-alfa";
+        private static string VERSION = "2.0.1";
 
         private static string API_LIVE_URI = "http://api.compropago.com/v1/";
         private static string API_SANDBOX_URI = "http://api.compropago.com/v1/";

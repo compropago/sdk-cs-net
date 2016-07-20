@@ -1,9 +1,9 @@
-# ComproPago SDK C#.NET v2.0.0-alfa
+# ComproPago SDK C#.NET v2.0.1
 
 ## Descripción
 
-La librería de `ComproPago SDK C#.NET` le permite interactuar con el API de ComproPago en su aplicación.  
-También cuenta con los métodos necesarios para facilitarle su desarrollo por medio de los servicios 
+La librería de `ComproPago SDK C#.NET` le permite interactuar con el API de ComproPago en su aplicación.
+También cuenta con los métodos necesarios para facilitarle su desarrollo por medio de los servicios
 más utilizados (SDK).
 
 Con ComproPago puede recibir pagos en OXXO, 7Eleven y muchas tiendas más en todo México.
@@ -108,7 +108,7 @@ using CompropagoSdk.Client;
 
 ### Configuración del Cliente
 
-Para poder hacer uso del SDK y llamados al API es necesario que primero configure sus Llaves de conexión y crear 
+Para poder hacer uso del SDK y llamados al API es necesario que primero configure sus Llaves de conexión y crear
 un instancia de Client.
 *Sus llaves las encontrara en su Panel de ComproPago en el menú Configuración.*
 
@@ -130,7 +130,7 @@ var client = new Client(
 
 ### Uso Básico del SDK
 
-> Consulte la documentación de la librería CS-SDK de ComproPago para conocer más de sus capacidades, configuraciones y métodos. (docs-cs-sdk-link)
+> Consulte la documentación de la librería CS-SDK de ComproPago para conocer más de sus capacidades, configuraciones y métodos.
 
 
 #### Llamados al los servicios por SDK
@@ -218,14 +218,14 @@ public CpOrderInfo verifyOrder(string orderId);
 ##### Obtener el listado de las tiendas donde se puede realizar el Pago
 
 Para obtener el listado de Proveedores disponibles para realizar el pago de las ordenes es necesario consutar el metodo
-**getProviders** que se encuentra alojado en el atributo **api** del objeto **Client** y el cual regresa una instancia
+**listProviders** que se encuentra alojado en el atributo **api** del objeto **Client** y el cual regresa una instancia
 de tipo **List< Provider >**
 
 ```CSharp
-var providers = client.api.getProviders();
+var providers = client.api.listProviders();
 ```
 
-###### Prototipo del metodo getProviders()
+###### Prototipo del metodo listProviders()
 
 ```CSharp
 /**
@@ -234,7 +234,7 @@ var providers = client.api.getProviders();
  * @param bool  fetch = false   Forzar recuperación de proveedores por base de datos
  * @return List<Provider>
  */
-public List<Provider> getProviders(bool auth = false, float limit = 0, bool fetch = false);
+public List<Provider> listProviders(bool auth = false, float limit = 0, bool fetch = false);
 ```
 
 ##### Envio de instrucciones SMS
@@ -350,11 +350,11 @@ public Webhook deleteWebhook(string webhookId);
 
 ##### Obtener listado de Webhooks registrados
 
-Para obtener la lista de webhooks registrados den una cuenta, se debe de llamar al metodo **getWebhook** que se encuentra alojado en el atributo **api**
+Para obtener la lista de webhooks registrados den una cuenta, se debe de llamar al metodo **listWebhook** que se encuentra alojado en el atributo **api**
 del objeto **Client** y el cual regresa una instancia de tipo **List< Webhook >**
 
 ```CSharp
-var updateWebhook = client.api.getWebhooks();
+var updateWebhook = client.api.listWebhooks();
 ```
 
 ###### Prototipo del metodo getWebhook()
@@ -363,12 +363,17 @@ var updateWebhook = client.api.getWebhooks();
 /**
  * @return List<Webhook>
  */
-public List<Webhook> getWebhooks();
+public List<Webhook> listWebhooks();
 ```
 
-##### Incluir recibo de order de pago
+### Guia de versiones
 
-```HTML
-// Include this tag in your page success
-<iframe href="https://www.compropago.com/comprobante/?confirmation_id=<% Response.Write(newOrder.id) %>"></iframe>
-```
+| Version | Namespace        | Status     | Branch                 |
+|---------|------------------|------------|------------------------|
+| 1.0.0   | `Compropago.Sdk` | Maintained | [1.0.0][branch-1-0-0]  |
+| 2.0.0   | `CompropagoSdk`  | Maintained | [2.0.0][branch-2-0-0]  |
+| 2.0.1   | `CompropagoSdk`  | Latest     | [2.0.1][branch-latest] |
+
+[branch-1-0-0]: https://github.com/compropago/sdk-cs-net/tree/1.0.0
+[branch-2.0.0]: https://github.com/compropago/sdk-cs-net/tree/2.0.0
+[branch-latest]: https://github.com/compropago/sdk-cs-net/

@@ -30,7 +30,7 @@ namespace CompropagoSdk
          * @param bool  fetch = false   Forzar recuperación de proveedores por base de datos
          * @return List<Provider>
          */     
-        public List<Provider> getProviders(bool auth = false, float limit = 0, bool fetch = false)
+        public List<Provider> listProviders(bool auth = false, float limit = 0, bool fetch = false)
         {
             if (auth)
             {
@@ -135,7 +135,9 @@ namespace CompropagoSdk
                 "&customer_name=" + info.customer_name +
                 "&customer_email=" + info.customer_email +
                 "&image_url=" + info.image_url +
-                "&payment_type=" + info.payment_type;
+                "&payment_type=" + info.payment_type +
+                "&app_client_name" + info.app_client_name +
+                "&app_client_version" + info.app_client_version;
 
             var uri = this.client.getUri() + "charges/";
 
@@ -284,7 +286,7 @@ namespace CompropagoSdk
          * 
          * @return List<Webhook>
          */ 
-        public List<Webhook> getWebhooks()
+        public List<Webhook> listWebhooks()
         {
             Validations.validateGateway(client);
 
@@ -369,6 +371,12 @@ namespace CompropagoSdk
         }
 
 
+        /**
+         * Eliminar un webhook
+         * 
+         * @param string webhookId       Id del webhook registrado
+         * @return Webhook
+         */ 
         public Webhook deleteWebhook(string webhookId)
         {
             Validations.validateGateway(client);
