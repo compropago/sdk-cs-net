@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # ComproPago SDK C#.NET v2.0.1
+=======
+# ComproPago SDK C#.NET v2.0.0
+>>>>>>> a7eabcac7747e49873100971e7f1f89404cfa939
 
 ## Descripción
 
@@ -377,3 +381,4 @@ public List<Webhook> listWebhooks();
 [branch-1-0-0]: https://github.com/compropago/sdk-cs-net/tree/1.0.0
 [branch-2-0-0]: https://github.com/compropago/sdk-cs-net/tree/2.0.0
 [branch-latest]: https://github.com/compropago/sdk-cs-net/
+
