@@ -375,5 +375,5 @@ public List<Webhook> listWebhooks();
 | 2.0.1   | `CompropagoSdk`  | Latest     | [2.0.1][branch-latest] |
 
 [branch-1-0-0]: https://github.com/compropago/sdk-cs-net/tree/1.0.0
-[branch-2.0.0]: https://github.com/compropago/sdk-cs-net/tree/2.0.0
+[branch-2-0-0]: https://github.com/compropago/sdk-cs-net/tree/2.0.0
 [branch-latest]: https://github.com/compropago/sdk-cs-net/
