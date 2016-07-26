@@ -46,8 +46,9 @@ namespace CompropagoSdk.Tools
             var clientMode = client.getMode();
             var authInfo = evalAuth(client);
 
-            if (authInfo.modekey != authInfo.livemode)
+            if (authInfo.mode_key != authInfo.livemode)
             {
+
                 throw new Exception("Las llaves no corresponden al modo de la tienda.");
             }
 
@@ -56,7 +57,7 @@ namespace CompropagoSdk.Tools
                 throw new Exception("El modo del cliente no corresponde al de la tienda.");
             }
 
-            if (clientMode != authInfo.modekey)
+            if (clientMode != authInfo.mode_key)
             {
                 throw new Exception("El modo del cliente no corresponde al de las llaves.");
             }
