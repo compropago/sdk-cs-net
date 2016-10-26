@@ -219,7 +219,7 @@ public CpOrderInfo verifyOrder(string orderId);
 
 ##### Obtener el listado de las tiendas donde se puede realizar el Pago
 
-Para obtener el listado de Proveedores disponibles para realizar el pago de las ordenes es necesario consutar el metodo
+Para obtener el listado de Proveedores disponibles para realizar el pago de las ordenes es necesario consutar el método
 **listProviders** que se encuentra alojado en el atributo **api** del objeto **Client** y el cual regresa una instancia
 de tipo **List< Provider >**
 
@@ -241,7 +241,7 @@ public List<Provider> listProviders(bool auth = false, float limit = 0, bool fet
 
 ##### Envio de instrucciones SMS
 
-Para realizar el el envio de las instrucciones de compra via SMS es necesario llamar al metodo **sendSmsInstructions** que se
+Para realizar el envío de las instrucciones de compra via SMS es necesario llamar al método **sendSmsInstructions** que se
 que se encuentra alojado en el atributo **api** del objeto **Client** y el cual regresa una instancia de tipo **SmsInfo**
 
 ```CSharp
@@ -274,25 +274,20 @@ public SmsInfo sendSmsInstructions(string number, string orderId);
 
 #### Webhooks
 
-Los webhooks son de suma importancia para el proceso las ordenes de ComproPago, ya que estos se encargaran de recibir las notificaciones de el cambio en
-los estatus de las ordenes de compra generadas, tambien deberan contener parte de la logica de aprobacion en su tienda en linea. El proceso que siguen
-es el siguiente.
+Los webhooks son de suma importancia para el proceso de las órdenes de ComproPago, ya que ellos se encargaran de recibir las notificaciones del cambio en los estatus de las órdenes de compra generadas, tambien deberán contener parte de la lógica de aprobación en su tienda en línea. El proceso que siguen es el siguiente.
 
-1. Cuando una orden cambia su estatus, nuestra plataforma le notificara a cada una de las rutas registradas, dicho cambio con la informacion de la orden
-   modificada en formato JSON
-2. Debera de recuperar este JSON en una cadena de texto para posterior mente convertirla a un objeto de todpo **CpOrderInfo** haciendo uso de la clase Factory
-   que proporciona el SDK de la siguiente forma:
+1. Cuando una órden cambia su estatus, nuestra plataforma le notificará a cada una de las rutas registradas, dicho cambio con la información de la orden modificada en formato JSON
+2. Deberá recuperar dicho JSON en una cadena de texto para posteriormente convertirla a un objeto de tipo **CpOrderInfo** haciendo uso de la clase Factory que proporciona el SDK de la siguiente forma:
 
 ```CSharp
 CpOrderInfo info = CompropagoSdk.Factory.Factory.cpOrderInfo( cadenaJson );
 ```
 
-3. Generar la logica de aprovacion correspondiente al estatus de la orden.
+3. Generar la lógica de aprobación correspondiente al estatus de la órden.
 
 ##### Crear un nuevo Webhook
 
-Para crear un nuevo Webhook en la cuenta, se debe de llamar al metodo **createWebhook** que se encuentra alojado en el atributo **api** del objeto **Client**
-y el cual regresa una instancia de tipo **Webhook**
+Para crear un nuevo Webhook en la cuenta, se debe de llamar al método **createWebhook** que se encuentra alojado en el atributo **api** del objeto **Client** y el cual regresa una instancia de tipo **Webhook**
 
 ```CSharp
 /**
@@ -301,7 +296,7 @@ y el cual regresa una instancia de tipo **Webhook**
 var webhook = client.api.createWebhook("http://sitio.com/webhook");
 ```
 
-###### Prototipo del metodo createWebhook()
+###### Prototipo del método createWebhook()
 
 ```CSharp
 /**
@@ -313,14 +308,13 @@ public Webhook createWebhook(string url);
 
 ##### Actualizar un Webhook
 
-Para actualizar la url de un webhoo, se debe de llamar al metodo **updateWebhook** que se encuentra alojado en el atributo **api** del objeto **Client**
-y el cual regresa una instancia de tipo **Webhook**
+Para actualizar la url de un webhook, se debe de llamar al método **updateWebhook** que se encuentra alojado en el atributo **api** del objeto **Client** y el cual regresa una instancia de tipo **Webhook**
 
 ```CSharp
 var updateWebhook = client.api.updateWebhook(webhookId, newUrl);
 ```
 
-###### Prototipo del metodo updateWebhook()
+###### Prototipo del método updateWebhook()
 
 ```CSharp
 /**
@@ -333,14 +327,13 @@ public Webhook updateWebhook(string webhookId, string url);
 
 ##### Eliminar un Webhook
 
-Para eliminar un webhook, se debe de llamar al metodo **deleteWebhook** que se encuentra alojado en el atributo **api** del objeto **Client**
-y el cual regresa una instancia de tipo **Webhook**
+Para eliminar un webhook, se debe de llamar al método **deleteWebhook** que se encuentra alojado en el atributo **api** del objeto **Client** y el cual regresa una instancia de tipo **Webhook**
 
 ```CSharp
 var updateWebhook = client.api.deleteWebhook(webhookId);
 ```
 
-###### Prototipo del metodo deleteWebhook()
+###### Prototipo del método deleteWebhook()
 
 ```CSharp
 /**
@@ -352,8 +345,7 @@ public Webhook deleteWebhook(string webhookId);
 
 ##### Obtener listado de Webhooks registrados
 
-Para obtener la lista de webhooks registrados den una cuenta, se debe de llamar al metodo **listWebhook** que se encuentra alojado en el atributo **api**
-del objeto **Client** y el cual regresa una instancia de tipo **List< Webhook >**
+Para obtener la lista de webhooks registrados den una cuenta, se debe de llamar al método **listWebhook** que se encuentra alojado en el atributo **api** del objeto **Client** y el cual regresa una instancia de tipo **List< Webhook >**
 
 ```CSharp
 var updateWebhook = client.api.listWebhooks();
