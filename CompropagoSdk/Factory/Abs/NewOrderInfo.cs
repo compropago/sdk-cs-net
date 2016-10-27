@@ -1,4 +1,5 @@
-﻿
+﻿using CompropagoSdk.Models;
+
 namespace CompropagoSdk.Factory.Abs
 {
     public abstract class NewOrderInfo

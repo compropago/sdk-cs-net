@@ -7,7 +7,7 @@ using CompropagoSdk.Factory.V11;
 
 namespace CompropagoSdk.Factory
 {
-    class Factory
+    public class Factory
     {
         public static bool verifierVersion(string source, JavaScriptSerializer serializer)
         {

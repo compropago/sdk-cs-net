@@ -6,7 +6,7 @@ using CompropagoSdk.Models;
 
 namespace CompropagoSdk.Tools
 {
-    class Validations
+    public class Validations
     {
         public static EvalAuthInfo evalAuth(Client client)
         {

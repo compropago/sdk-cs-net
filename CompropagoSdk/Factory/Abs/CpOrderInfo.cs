@@ -1,7 +1,4 @@
-﻿/**
- * 
- */ 
-
+﻿
 using CompropagoSdk.Models;
 
 namespace CompropagoSdk.Factory.Abs

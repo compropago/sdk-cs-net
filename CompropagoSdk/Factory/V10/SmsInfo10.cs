@@ -3,7 +3,7 @@ using CompropagoSdk.Factory.Abs;
 
 namespace CompropagoSdk.Factory.V10
 {
-    class SmsInfo10 : SmsInfo
+    public class SmsInfo10 : SmsInfo
     {
         public string type { get; set; }
         public string Object { get; set; }

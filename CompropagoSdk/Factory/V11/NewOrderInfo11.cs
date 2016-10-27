@@ -1,8 +1,9 @@
 ﻿using CompropagoSdk.Factory.Abs;
+using CompropagoSdk.Models;
 
 namespace CompropagoSdk.Factory.V11
 {
-    class NewOrderInfo11 : NewOrderInfo
+    public class NewOrderInfo11 : NewOrderInfo
     {
         public string id { get; set; }
         public string short_id { get; set; }
@@ -13,7 +14,7 @@ namespace CompropagoSdk.Factory.V11
         public bool live_mode { get; set; }
         public OrderInfo11 order_info { get; set; }
         public FeeDetails11 fee_details { get; set; }
-        public Instructions11 instructions { get; set; } 
+        public Instructions instructions { get; set; } 
 
         public override string getCreated()
         {

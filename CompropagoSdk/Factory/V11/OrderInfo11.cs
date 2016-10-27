@@ -2,7 +2,7 @@
 
 namespace CompropagoSdk.Factory.V11
 {
-    class OrderInfo11 : OrderInfo
+    public class OrderInfo11 : OrderInfo
     {
         public string order_id { get; set; }
         public string order_price { get; set; }

@@ -1,9 +1,9 @@
-﻿using System;
+﻿using CompropagoSdk.Models;
 using CompropagoSdk.Factory.Abs;
 
 namespace CompropagoSdk.Factory.V10
 {
-    class NewOrderInfo10 : NewOrderInfo
+    public class NewOrderInfo10 : NewOrderInfo
     {
         public string payment_id { get; set; }
         public string short_paymanet_id { get; set; }
@@ -11,7 +11,7 @@ namespace CompropagoSdk.Factory.V10
         public string creation_date { get; set; }
         public string expiration_date { get; set; }
         public ProductInformation product_information { get; set; }
-        public Instructions10 payment_instructions { get; set; } 
+        public Instructions payment_instructions { get; set; } 
 
         public override string getCreated()
         {

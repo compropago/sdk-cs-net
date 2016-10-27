@@ -3,7 +3,7 @@ using CompropagoSdk.Factory.Abs;
 
 namespace CompropagoSdk.Factory.V10
 {
-    class CpOrderInfo10 : CpOrderInfo
+    public class CpOrderInfo10 : CpOrderInfo
     {
         public string type { get; set; }
         public string Object { get; set; }
