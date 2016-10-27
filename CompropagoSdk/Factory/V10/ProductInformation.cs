@@ -1,7 +1,7 @@
 ﻿
 namespace CompropagoSdk.Factory.V10
 {
-    class ProductInformation
+    public class ProductInformation
     {
         public string product_id { get; set; }
         public string product_name { get; set; }

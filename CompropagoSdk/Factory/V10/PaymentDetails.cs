@@ -1,7 +1,7 @@
 ﻿
 namespace CompropagoSdk.Factory.V10
 {
-    class PaymentDetails
+    public class PaymentDetails
     {
         public string Object { get; set; }
         public string store { get; set; }

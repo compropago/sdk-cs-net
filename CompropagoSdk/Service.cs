@@ -10,7 +10,7 @@ using CompropagoSdk.Factory.Abs;
 
 namespace CompropagoSdk
 {
-    class Service
+    public class Service
     {
         private Client client { get; set; }
         private Dictionary<string, string> headers = new Dictionary<string, string>();

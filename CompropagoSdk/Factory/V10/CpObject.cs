@@ -1,7 +1,7 @@
 ﻿
 namespace CompropagoSdk.Factory.V10
 {
-    class CpObject
+    public class CpObject
     {
         public string id { get; set; }
         public string Object { get; set; }

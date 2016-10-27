@@ -1,7 +1,7 @@
 ﻿
 namespace CompropagoSdk.Models
 {
-    class EvalAuthInfo
+    public class EvalAuthInfo
     {
         public string type    { get; set; }
         public bool livemode  { get; set; }

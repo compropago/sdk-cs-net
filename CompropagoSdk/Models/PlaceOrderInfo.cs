@@ -1,7 +1,7 @@
 ﻿
 namespace CompropagoSdk.Models
 {
-    class PlaceOrderInfo
+    public class PlaceOrderInfo
     {
         public string order_id { get; set; }
         public string order_name { get; set; }
@@ -33,7 +33,8 @@ namespace CompropagoSdk.Models
             string payment_type = "OXXO", 
             string image_url = null,
             string app_client_name = "csnetsdk",
-            string app_client_version = "2.0.1")
+            string app_client_version = ""
+        )
         {
             this.order_id           = order_id;
             this.order_name         = order_name;
@@ -43,7 +44,7 @@ namespace CompropagoSdk.Models
             this.payment_type       = payment_type;
             this.image_url          = image_url;
             this.app_client_name    = app_client_name;
-            this.app_client_version = app_client_version;
+            this.app_client_version = app_client_version.Equals("") ? Client.VERSION : app_client_version;
         }
     }
 }

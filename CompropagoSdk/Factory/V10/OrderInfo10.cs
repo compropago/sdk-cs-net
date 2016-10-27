@@ -1,9 +1,8 @@
-﻿using System;
-using CompropagoSdk.Factory.Abs;
+﻿using CompropagoSdk.Factory.Abs;
 
 namespace CompropagoSdk.Factory.V10
 {
-    class OrderInfo10 : OrderInfo
+    public class OrderInfo10 : OrderInfo
     {
         public string order_id { get; set; }
         public string order_price { get; set; }

@@ -1,9 +1,8 @@
-﻿using System;
-using CompropagoSdk.Factory.Abs;
+﻿using CompropagoSdk.Factory.Abs;
 
 namespace CompropagoSdk.Factory.V11
 {
-    class FeeDetails11 : FeeDetails
+    public class FeeDetails11 : FeeDetails
     {
         public string amount { get; set; }
         public string currency { get; set; }

@@ -1,7 +1,7 @@
 ﻿
 namespace CompropagoSdk.Models
 {
-    class Provider
+    public class Provider
     {
         public string name { get; set; }
         public string store_image { get; set; }

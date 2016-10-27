@@ -1,18 +1,18 @@
 ﻿
 namespace CompropagoSdk
 {
-    class Client
+    public class Client
     {
-        private static string VERSION = "2.0.2";
+        public static string VERSION = "2.1.0";
 
         private static string API_LIVE_URI = "http://api.compropago.com/v1/";
         private static string API_SANDBOX_URI = "http://api.compropago.com/v1/";
 
-        private string publickey { get; }
-        private string privatekey { get; }
-        private bool live { get; }
-        private string contained { get; }
-        private string deployUri { get; }
+        private string publickey { get; set; }
+        private string privatekey { get; set; }
+        private bool live { get; set; }
+        private string contained { get; set; }
+        private string deployUri { get; set; }
 
         public Service api { get; set; }
 
