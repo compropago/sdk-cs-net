@@ -1,5 +1,5 @@
 
-# ComproPago SDK C#.NET v2.0.2
+# ComproPago SDK C#.NET
 
 ## Descripción
 
@@ -31,10 +31,12 @@ Con ComproPago puede recibir pagos en OXXO, 7Eleven y más tiendas en todo Méxi
 ## Requerimientos
 
 * NET framework 4.x
+* Newtonsoft.Json 9.0.1
 
 ### Referencias
 
 * Microsoft.CSharp
+* Newtonsoft.Json
 * System
 * System.Core
 * System.Data
@@ -48,25 +50,27 @@ Con ComproPago puede recibir pagos en OXXO, 7Eleven y más tiendas en todo Méxi
 
 ## Instalación ComproPago SDK C#.NET
 
-### Instalación por GitHub
+Puede descarga la ultima version estable desde los repositorios de NuGet. El repositorio del SDK es el siguiete:
+[https://www.nuget.org/packages/ComproPago/](https://www.nuget.org/packages/ComproPago/). O bien puede instalarlo
+desde el Package Manager Console de la siguiente forma:
 
-Puedes descargar alguna de las versiones que hemos publicado:
+```bash
+PM> Install-Package ComproPago
+```
+
+Puede descargar alguna de las versiones que hemos publicado:
 
 - [Consultar Versiones Publicadas en GitHub](https://github.com/compropago/compropago-php/releases)
 
-O si o lo deseas puedes obtener el repositorio
+O si o lo desea puede obtener el repositorio
 
 ```bash
 #repositorio en su estado actual (*puede no ser versón estable*)
 git clone https://github.com/compropago/sdk-cs-net.git
 ```
 
-Para poder hacer uso de la librería es necesario que incluyas **Todos** los archivos contenidos en la carpeta
-**CompropagoSdk** en su proyecto.
 
 ## Documentación
-
-### Documentación ComproPago SDK C#.NET ComproPago
 
 ### Documentación de ComproPago
 
@@ -87,7 +91,8 @@ Información de Horarios y Comisiones, como Transferir tu dinero y la Seguridad 
 * Librerías y Plugins
 * Shopify
 
-## Guía básica de Uso
+
+## Documentación ComproPago SDK C#.NET
 
 Se debe contar con una cuenta activa de ComproPago.
 
@@ -99,21 +104,13 @@ Para poder hacer uso de la librería es necesario incluir las librerias principa
 
 ```CSharp
 using CompropagoSdk;
-using CompropagoSdk.Models;
-using CompropagoSdk.Factory.Abs;
-```
-
-Las clase principal del SDK es:
-
-```CSharp
-using CompropagoSdk.Client;
+using CompropagoSdk.Factory;
 ```
 
 ### Configuración del Cliente
 
 Para poder hacer uso del SDK y llamados al API es necesario que primero configures tus Llaves de conexión y crees
-un instancia de Client.
-*Sus llaves las encontrara en su Panel de ComproPago en el menú Configuración.*
+un instancia de Client. *Sus llaves las encontrara en su Panel de ComproPago en el menú Configuración.*
 
 [Consulte Aquí sus Llaves](https://compropago.com/panel/configuracion)
 
@@ -122,7 +119,6 @@ un instancia de Client.
  * @param string publickey     Llave publica correspondiente al modo de la tienda
  * @param string privatekey    Llave privada correspondiente al modo de la tienda
  * @param bool   live          Modo de la tienda (false = Test | true = Live)
- * @param string contained     (optional) App User agent
  */
 var client = new Client(
     "pk_test_xxxxxxxxxxxxxxxxx",  // publickey
@@ -133,7 +129,8 @@ var client = new Client(
 
 ### Uso Básico del SDK
 
-> Consulta la documentación de la librería CS-SDK de ComproPago para conocer más de sus capacidades, configuraciones y métodos.
+> Consulta la documentación de la librería CS-SDK de ComproPago para conocer más de sus capacidades, configuraciones y 
+métodos.
 
 
 #### Llamados al los servicios por SDK
@@ -155,25 +152,30 @@ de la variable **client** como se muestra a continuación.
  * @param string customer_name     Nombre completo del cliente
  * @param string customer_email    Correo electronico del cliente
  * @param string payment_type      (default = OXXO) Valor del atributo internal_name' de un objeto 'Provider'
- * @param string image_url         (optional) Url a la imagen del producto
+ * @param string currency          (default = MXN) Codigo de la moneda con la que se esta creando el cargo
  */
-var order = new PlaceOrderInfo(
-    "12",                                // order_id
-    "M4 Style",                          // order_name
-    1800,                                // order_price
-    "Name Lastname",                     // customer_name
-    "test@compropago.com",               // customer_email
-    "OXXO",                              // payment_type
-    "http://cdn.ejemplo.com/image.jpg"   // image_url
-);
+var orderInfo = new Dictionary<string, string>
+{
+    {"order_id", "123"},
+    {"order_name", "M4 sdk CS.NET"},
+    {"order_price", "123.45"},
+    {"customer_name", "Eduardo"},
+    {"customer_email", "eduardo.aguilar@compropago.com"},
+    {"payment_type", "OXXO"},
+    {"currency", "USD"},
+};
+/**
+ * Creación del objeto PlaceOrderInfo
+ */
+var order = Factory.PlaceOrderInfo(orderInfo);
 
 /**
- * Llamada al metodo 'placeOrder' del API para generar la orden
+ * Llamada al metodo 'PlaceOrder' del API para generar la orden
  */
-NewOrderInfo newOrder = client.api.placeOrder(order);
+var newOrder = client.Api.PlaceOrder(order);
 ```
 
-###### Prototipo del metodo placeOrder()
+###### Prototipo del metodo PlaceOrder()
 
 ```CSharp
 /**
@@ -185,8 +187,10 @@ public NewOrderInfo placeOrder(PlaceOrderInfo info);
 
 ##### Verificar el Estatus de una órden
 
-Para verificar el estatus de una órden generada es necesario llamar al método **verifyOrder** que provee el atributo **api**
-del objeto **Client** y el cual regresa una instancia **CpOrderInfo**. Este método recibe como parámetro el ID generado por ComproPago para cada órden. Tambien puede obtener este ID desde un objeto **NewOrderInfo** accediendo al método **getId**.
+Para verificar el estatus de una órden generada es necesario llamar al método **VerifyOrder** que provee el atributo
+**Api** del objeto **Client** y el cual regresa una instancia **CpOrderInfo**. Este método recibe como parámetro el ID
+generado por ComproPago para cada órden. Tambien puede obtener este ID desde un objeto **NewOrderInfo** accediendo al
+atributo **id**.
 
 ```CSharp
 /**
@@ -197,16 +201,16 @@ string orderId = "ch_xxxx_xxx_xxx_xxxx";
 /**
  * U obtenerlo de un objetdo NewOrderInfo
  */
-string orderId = newOrder.getId();
+string orderId = newOrder.id;
 
 
 /**
  * Se manda llamar al metodo del API para recuperar la informacion de la orden
  */
-CpOrderInfo info = client.api.verifyOrder(orderId);
+var info = client.Api.VerifyOrder(orderId);
 ```
 
-###### Prototipo del metodo verifyOrder()
+###### Prototipo del metodo VerifyOrder()
 
 ```CSharp
 /**
@@ -220,23 +224,22 @@ public CpOrderInfo verifyOrder(string orderId);
 ##### Obtener el listado de las tiendas donde se puede realizar el Pago
 
 Para obtener el listado de Proveedores disponibles para realizar el pago de las ordenes es necesario consutar el método
-**listProviders** que se encuentra alojado en el atributo **api** del objeto **Client** y el cual regresa una instancia
-de tipo **List< Provider >**
+**ListProviders** que se encuentra alojado en el atributo **Api** del objeto **Client** y el cual regresa una instancia
+de tipo **List<Provider>**
 
 ```CSharp
-var providers = client.api.listProviders();
+var providers = client.Api.ListProviders();
 ```
 
 ###### Prototipo del metodo listProviders()
 
 ```CSharp
 /**
- * @param bool  auth  = false   Forzar Autentificación
- * @param float limit = 0       Filtrar por limite de transacción
- * @param bool  fetch = false   Forzar recuperación de proveedores por base de datos
+ * @param bool  auth  = false   (default = false) Forzar autenficación para obtener proveedores especificos de una tienda
+ * @param float limit = 0       (default = 0) limite minimo de transaccion que deberan tener los proveedores a obtener
  * @return List<Provider>
  */
-public List<Provider> listProviders(bool auth = false, float limit = 0, bool fetch = false);
+public List<Provider> ListProviders(bool auth = false, double limit = 0);
 ```
 
 ##### Envio de instrucciones SMS
@@ -258,7 +261,7 @@ string orderId = "ch_xxxxx-xxxxx-xxxxx-xxxxx";
 /**
  * Llamada al metodo del API para envio de las instrucciones
  */
-SmsInfo smsinfo = client.api.sendSmsInstructions(phoneNumber, orderId);
+var smsinfo = client.Api.SendSmsInstructions(phoneNumber, orderId);
 ```
 
 ###### Prototipo del metodo sendSmsInstructions()
@@ -269,15 +272,19 @@ SmsInfo smsinfo = client.api.sendSmsInstructions(phoneNumber, orderId);
  * @param string orderId        Id de orden generada por ComproPago
  * @return SmsInfo
  */
-public SmsInfo sendSmsInstructions(string number, string orderId);
+public SmsInfo SendSmsInstructions(string number, string orderId);
 ```
 
 #### Webhooks
 
-Los webhooks son de suma importancia para el proceso de las órdenes de ComproPago, ya que ellos se encargaran de recibir las notificaciones del cambio en los estatus de las órdenes de compra generadas, tambien deberán contener parte de la lógica de aprobación en su tienda en línea. El proceso que siguen es el siguiente.
+Los webhooks son de suma importancia para el proceso de las órdenes de ComproPago, ya que ellos se encargaran de recibir
+las notificaciones del cambio en los estatus de las órdenes de compra generadas, tambien deberán contener parte de la 
+lógica de aprobación en su tienda en línea. El proceso que siguen es el siguiente.
 
-1. Cuando una órden cambia su estatus, nuestra plataforma le notificará a cada una de las rutas registradas, dicho cambio con la información de la orden modificada en formato JSON
-2. Deberá recuperar dicho JSON en una cadena de texto para posteriormente convertirla a un objeto de tipo **CpOrderInfo** haciendo uso de la clase Factory que proporciona el SDK de la siguiente forma:
+1. Cuando una órden cambia su estatus, nuestra plataforma le notificará a cada una de las rutas registradas, dicho 
+cambio con la información de la orden modificada en formato JSON
+2. Deberá recuperar dicho JSON en una cadena de texto para posteriormente convertirla a un objeto de tipo 
+**CpOrderInfo** haciendo uso de la clase Factory que proporciona el SDK de la siguiente forma:
 
 ```CSharp
 CpOrderInfo info = CompropagoSdk.Factory.Factory.cpOrderInfo( cadenaJson );
@@ -287,34 +294,36 @@ CpOrderInfo info = CompropagoSdk.Factory.Factory.cpOrderInfo( cadenaJson );
 
 ##### Crear un nuevo Webhook
 
-Para crear un nuevo Webhook en la cuenta, se debe de llamar al método **createWebhook** que se encuentra alojado en el atributo **api** del objeto **Client** y el cual regresa una instancia de tipo **Webhook**
+Para crear un nuevo Webhook en la cuenta, se debe de llamar al método **CreateWebhook** que se encuentra alojado en el
+atributo **Api** del objeto **Client** y el cual regresa una instancia de tipo **Webhook**
 
 ```CSharp
 /**
  * Se pasa como paramtro la URL al webhook
  */
-var webhook = client.api.createWebhook("http://sitio.com/webhook");
+var webhook = client.Api.CreateWebhook("http://sitio.com/webhook");
 ```
 
-###### Prototipo del método createWebhook()
+###### Prototipo del método CreateWebhook()
 
 ```CSharp
 /**
  * @param string url            Url del webhook a registrar
  * @return Webhook
  */
-public Webhook createWebhook(string url);
+public Webhook CreateWebhook(string url);
 ```
 
 ##### Actualizar un Webhook
 
-Para actualizar la url de un webhook, se debe de llamar al método **updateWebhook** que se encuentra alojado en el atributo **api** del objeto **Client** y el cual regresa una instancia de tipo **Webhook**
+Para actualizar la url de un webhook, se debe de llamar al método **UpdateWebhook** que se encuentra alojado en el 
+atributo **Api** del objeto **Client** y el cual regresa una instancia de tipo **Webhook**
 
 ```CSharp
-var updateWebhook = client.api.updateWebhook(webhookId, newUrl);
+var updateWebhook = client.Api.UpdateWebhook(webhookId, newUrl);
 ```
 
-###### Prototipo del método updateWebhook()
+###### Prototipo del método UpdateWebhook()
 
 ```CSharp
 /**
@@ -322,33 +331,36 @@ var updateWebhook = client.api.updateWebhook(webhookId, newUrl);
  * @param string url             Url nueva del webhook
  * @return Webhook
  */
-public Webhook updateWebhook(string webhookId, string url);
+public Webhook UpdateWebhook(string webhookId, string url);
 ```
 
 ##### Eliminar un Webhook
 
-Para eliminar un webhook, se debe de llamar al método **deleteWebhook** que se encuentra alojado en el atributo **api** del objeto **Client** y el cual regresa una instancia de tipo **Webhook**
+Para eliminar un webhook, se debe de llamar al método **DeleteWebhook** que se encuentra alojado en el atributo **Api** 
+del objeto **Client** y el cual regresa una instancia de tipo **Webhook**
 
 ```CSharp
-var updateWebhook = client.api.deleteWebhook(webhookId);
+var updateWebhook = client.Api.DeleteWebhook(webhookId);
 ```
 
-###### Prototipo del método deleteWebhook()
+###### Prototipo del método DeleteWebhook()
 
 ```CSharp
 /**
  * @param string webhookId       Id del webhook registrado
  * @return Webhook
  */
-public Webhook deleteWebhook(string webhookId);
+public Webhook DeleteWebhook(string webhookId);
 ```
 
 ##### Obtener listado de Webhooks registrados
 
-Para obtener la lista de webhooks registrados den una cuenta, se debe de llamar al método **listWebhook** que se encuentra alojado en el atributo **api** del objeto **Client** y el cual regresa una instancia de tipo **List< Webhook >**
+Para obtener la lista de webhooks registrados den una cuenta, se debe de llamar al método **ListWebhook** que se 
+encuentra alojado en el atributo **Api** del objeto **Client** y el cual regresa una instancia de tipo 
+**List< Webhook >**
 
 ```CSharp
-var updateWebhook = client.api.listWebhooks();
+var updateWebhook = client.Api.ListWebhooks();
 ```
 
 ###### Prototipo del metodo listWebhook()
@@ -357,17 +369,5 @@ var updateWebhook = client.api.listWebhooks();
 /**
  * @return List<Webhook>
  */
-public List<Webhook> listWebhooks();
+public List<Webhook> ListWebhooks();
 ```
-
-### Guia de versiones
-
-| Version | Namespace        | Status     | Branch                 |
-|---------|------------------|------------|------------------------|
-| 1.0.0   | `Compropago.Sdk` | Maintained | [1.0.0][branch-1-0-0]  |
-| 2.0.0   | `CompropagoSdk`  | Maintained | [2.0.0][branch-2-0-0]  |
-| 2.0.x   | `CompropagoSdk`  | Latest     | [2.0.1][branch-latest] |
-
-[branch-1-0-0]: https://github.com/compropago/sdk-cs-net/tree/1.0.0
-[branch-2-0-0]: https://github.com/compropago/sdk-cs-net/tree/2.0.0
-[branch-latest]: https://github.com/compropago/sdk-cs-net/
