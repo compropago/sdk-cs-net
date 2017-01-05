@@ -1,63 +1,40 @@
-﻿
-namespace CompropagoSdk
+﻿namespace CompropagoSdk
 {
     public class Client
     {
-        public static string VERSION = "2.1.0";
+        public static string Version = "3.0.0";
 
-        private static string API_LIVE_URI = "http://api.compropago.com/v1/";
-        private static string API_SANDBOX_URI = "http://api.compropago.com/v1/";
+        public static string ApiLiveUri = "https://api.compropago.com/v1/";
+        public static string ApiSandboxUri = "https://api.compropago.com/v1/";
 
-        private string publickey { get; set; }
-        private string privatekey { get; set; }
-        private bool live { get; set; }
-        private string contained { get; set; }
-        private string deployUri { get; set; }
+        private readonly string _publicKey;
+        private readonly string _privateKey;
 
-        public Service api { get; set; }
+        public bool Live { get; set; }
 
+        public string DeployUri { get; set; }
 
-        /**
-         * @param string publickey     Llave publica correspondiente al modo de la tienda
-         * @param string privatekey    Llave privada correspondiente al modo de la tienda
-         * @param bool   live          Modo de la tienda (false = Test | true = Live)
-         * @param string contained     (optional) App User agent
-         */ 
-        public Client(string publickey, string privatekey, bool live, string contained = null)
+        public Service Api { get; set; }
+
+        public Client(string publicKey, string privateKey, bool live)
         {
-            this.publickey  = publickey;
-            this.privatekey = privatekey;
-            this.live       = live;
+            _publicKey = publicKey;
+            _privateKey = privateKey;
+            Live = live;
 
-            this.contained  = (contained != null) ? contained : "SDK; cs-sdk "+VERSION;
-            this.deployUri  = live ? API_LIVE_URI : API_SANDBOX_URI;
+            DeployUri = live ? ApiLiveUri : ApiSandboxUri;
 
-            this.api = new Service(this);
+            Api = new Service(this);
         }
 
-        public string getAuth()
+        public string GetUser()
         {
-            return this.privatekey + ":";
+            return _privateKey;
         }
 
-        public string getFullAuth()
+        public string GetPass()
         {
-            return this.privatekey + ":" + this.publickey;
-        }
-
-        public bool getMode()
-        {
-            return this.live;
-        }
-
-        public string getUri()
-        {
-            return this.deployUri;
-        }
-
-        public string getContained()
-        {
-            return this.contained;
+            return _publicKey;
         }
     }
 }

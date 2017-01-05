@@ -1,99 +1,226 @@
-﻿using CompropagoSdk.Models;
+﻿using System;
 using System.Web.Script.Serialization;
 using System.Collections.Generic;
-using CompropagoSdk.Factory.Abs;
-using CompropagoSdk.Factory.V10;
-using CompropagoSdk.Factory.V11;
+using CompropagoSdk.Factory.Models;
+using Newtonsoft.Json;
 
 namespace CompropagoSdk.Factory
 {
     public class Factory
     {
-        public static bool verifierVersion(string source, JavaScriptSerializer serializer)
+        public static CpOrderInfo CpOrderInfo(string source = null)
         {
-            VerifierVersion obj = serializer.Deserialize<VerifierVersion>(source);
-            return (obj.api_version != null);
-        }
+            if (source == null)
+            {
+                return new CpOrderInfo();
+            }
 
-        public static EvalAuthInfo evalAuthInfo(string source)
-        {
-            var serializer = new JavaScriptSerializer();
-            EvalAuthInfo obj = serializer.Deserialize<EvalAuthInfo>(source);
+            var obj = JsonConvert.DeserializeObject<CpOrderInfo>(source);
 
             return obj;
         }
 
-        public static List<Provider> listProviders(string source)
+        public static Customer Customer(string source = null)
         {
-            var serializer = new JavaScriptSerializer();
-            List<Provider> obj = serializer.Deserialize<List<Provider>>(source);
+            if (source == null)
+            {
+                return new Customer();
+            }
+
+            var obj = JsonConvert.DeserializeObject<Customer>(source);
 
             return obj;
         }
 
-        public static NewOrderInfo newOrderInfo(string source)
+        public static EvalAuthInfo EvalAuthInfo(string source = null)
         {
-            var serializer = new JavaScriptSerializer();
-            NewOrderInfo obj = null;
-
-            if (verifierVersion(source, serializer))
+            if (source == null)
             {
-                obj = serializer.Deserialize<NewOrderInfo11>(source);
-            }
-            else
-            {
-                obj = serializer.Deserialize<NewOrderInfo10>(source);
+                return new EvalAuthInfo();
             }
 
-            return obj;
-                
-        }
-
-        public static CpOrderInfo cpOrderInfo(string source)
-        {
-            var serializer = new JavaScriptSerializer();
-            CpOrderInfo obj = null;
-
-            if (verifierVersion(source, serializer))
-            {
-                obj = serializer.Deserialize<CpOrderInfo11>(source);
-            }
-            else
-            {
-                obj = serializer.Deserialize<CpOrderInfo10>(source);
-            }
+            var obj = JsonConvert.DeserializeObject<EvalAuthInfo>(source);
 
             return obj;
         }
 
-        public static SmsInfo smsInfo(string source)
+        public static FeeDetails FeeDetails(string source = null)
         {
-            var serializer = new JavaScriptSerializer();
-            SmsInfo obj = null;
+            if (source == null)
+            {
+                return new FeeDetails();
+            }
 
-            if (verifierVersion(source, serializer))
-            {
-                obj = serializer.Deserialize<SmsInfo11>(source);
-            }
-            else
-            {
-                obj = serializer.Deserialize<SmsInfo10>(source);
-            }
+            var obj = JsonConvert.DeserializeObject<FeeDetails>(source);
 
             return obj;
         }
 
-        public static Webhook webhook(string source)
+        public static InstructionDetails InstructionDetails(string source = null)
         {
-            var serializer = new JavaScriptSerializer();
-            var obj = serializer.Deserialize<Webhook>(source);
+            if (source == null)
+            {
+                return new InstructionDetails();
+            }
+
+            var obj = JsonConvert.DeserializeObject<InstructionDetails>(source);
+
             return obj;
         }
 
-        public static List<Webhook> listWebhooks(string source)
+        public static Instructions Instructions(string source = null)
         {
-            var serializer = new JavaScriptSerializer();
-            var obj = serializer.Deserialize<List<Webhook>>(source);
+            if (source == null)
+            {
+                return new Instructions();
+            }
+
+            var obj = JsonConvert.DeserializeObject<Instructions>(source);
+
+            return obj;
+        }
+
+        public static NewOrderInfo NewOrderInfo(string source = null)
+        {
+            if (source == null)
+            {
+                return new NewOrderInfo();
+            }
+
+            var obj = JsonConvert.DeserializeObject<NewOrderInfo>(source);
+
+            return obj;
+        }
+
+        public static OrderInfo OrderInfo(string source = null)
+        {
+            if (source == null)
+            {
+                return new OrderInfo();
+            }
+
+            var obj = JsonConvert.DeserializeObject<OrderInfo>(source);
+
+            return obj;
+        }
+
+        public static PlaceOrderInfo PlaceOrderInfo(Dictionary<string,string> source = null)
+        {
+            if (source == null)
+            {
+                return new PlaceOrderInfo(null, null, 0, null, null);
+            }
+
+            if (!source.ContainsKey("payment_type"))
+            {
+                source.Add("payment_type", "OXXO");
+            }
+
+            if (!source.ContainsKey("currency"))
+            {
+                source.Add("currency", "MXN");
+            }
+
+            if (!source.ContainsKey("image_url"))
+            {
+                source.Add("image_url", "");
+            }
+
+            if (!source.ContainsKey("app_client_name"))
+            {
+                source.Add("app_client_name", "sdk-cs");
+            }
+
+            if (!source.ContainsKey("app_client_version"))
+            {
+                source.Add("app_client_version", Client.Version);
+            }
+
+            var json = JsonConvert.SerializeObject(source);
+            return JsonConvert.DeserializeObject<PlaceOrderInfo>(json);
+        }
+
+        public static Provider Provider(string source = null)
+        {
+            if (source == null)
+            {
+                return new Provider();
+            }
+
+            var obj = JsonConvert.DeserializeObject<Provider>(source);
+
+            return obj;
+        }
+
+        public static List<Provider> ListProviders(string source = null)
+        {
+            if (source == null)
+            {
+                return null;
+            }
+
+            var obj = JsonConvert.DeserializeObject<List<Provider>>(source);
+
+            return obj;
+        }
+
+        public static SmsData SmsData(string source = null)
+        {
+            if (source == null)
+            {
+                return new SmsData();
+            }
+
+            var obj = JsonConvert.DeserializeObject<SmsData>(source);
+
+            return obj;
+        }
+
+        public static SmsInfo SmsInfo(string source = null)
+        {
+            if (source == null)
+            {
+                return new SmsInfo();
+            }
+
+            var obj = JsonConvert.DeserializeObject<SmsInfo>(source);
+
+            return obj;
+        }
+
+        public static SmsObject SmsObject(string source = null)
+        {
+            if (source == null)
+            {
+                return new SmsObject();
+            }
+
+            var obj = JsonConvert.DeserializeObject<SmsObject>(source);
+
+            return obj;
+        }
+
+        public static Webhook Webhook(string source = null)
+        {
+            if (source == null)
+            {
+                return new Webhook();
+            }
+
+            var obj = JsonConvert.DeserializeObject<Webhook>(source);
+
+            return obj;
+        }
+
+        public static List<Webhook> ListWebhooks(string source = null)
+        {
+            if (source == null)
+            {
+                return null;
+            }
+
+            var obj = JsonConvert.DeserializeObject<List<Webhook>>(source);
+
             return obj;
         }
     }
