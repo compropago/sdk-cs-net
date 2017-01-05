@@ -1,6 +1,0 @@
-/Users/Arthur/Desktop/packages/cp-cs/CompropagoSdk/CompropagoSdk/obj/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
-/Users/Arthur/Desktop/packages/cp-cs/CompropagoSdk/CompropagoSdk/bin/Debug/CompropagoSdk.dll.mdb
-/Users/Arthur/Desktop/packages/cp-cs/CompropagoSdk/CompropagoSdk/bin/Debug/CompropagoSdk.dll
-/Users/Arthur/Desktop/packages/cp-cs/CompropagoSdk/CompropagoSdk/obj/Debug/CompropagoSdk.dll
-/Users/Arthur/Desktop/packages/cp-cs/CompropagoSdk/CompropagoSdk/obj/Debug/CompropagoSdk.dll.mdb
-/Users/Arthur/Desktop/packages/cp-cs/CompropagoSdk/CompropagoSdk/bin/Debug/Newtonsoft.Json.dll

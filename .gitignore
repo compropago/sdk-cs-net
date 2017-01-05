@@ -1,2 +1,5 @@
 .idea/
 ExtraTest/
+*.nupkg
+CompropagoSdk/bin/
+CompropagoSdk/obj/

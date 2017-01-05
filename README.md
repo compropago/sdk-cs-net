@@ -287,7 +287,7 @@ cambio con la información de la orden modificada en formato JSON
 **CpOrderInfo** haciendo uso de la clase Factory que proporciona el SDK de la siguiente forma:
 
 ```CSharp
-CpOrderInfo info = CompropagoSdk.Factory.Factory.cpOrderInfo( cadenaJson );
+var info = Factory.CpOrderInfo( cadenaJson );
 ```
 
 3. Generar la lógica de aprobación correspondiente al estatus de la órden.
