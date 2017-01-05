@@ -1,68 +1,62 @@
 ﻿using System;
-using System.Net;
-using System.IO;
-using System.Text;
-using CompropagoSdk.Models;
+using System.Collections.Generic;
+using CompropagoSdk.Factory.Models;
 
 namespace CompropagoSdk.Tools
 {
     public class Validations
     {
-        public static EvalAuthInfo evalAuth(Client client)
+        public static EvalAuthInfo EvalAuth(Client client)
         {
-            var uri = client.getUri() + "users/auth/";
+            string response;
 
-            Uri requestUri = null;
-            Uri.TryCreate(uri, UriKind.Absolute, out requestUri);
-
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(requestUri);
-
-            request.Method = "GET";
-
-            request.ContentType = "application/x-www-form-urlencoded";
-            request.Headers.Add("Authorization", string.Concat("Basic ",
-                (Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}", client.getFullAuth()))))));
-
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            Stream respStream = response.GetResponseStream();
-
-            var reader = new StreamReader(respStream);
-            var stripe = reader.ReadToEnd();
-
-            EvalAuthInfo obj = Factory.Factory.evalAuthInfo(stripe);
-
-            switch (obj.code)
+            if (client.GetUser() != "" || client.GetPass() != "")
             {
-                case 200:
-                    return obj;
-
-                default:
-                    throw new Exception("Code "+obj.code+": "+obj.message);
+                response = Request.Get(
+                    client.DeployUri + "users/auth/",
+                    new Dictionary<string, string> {{"user", client.GetUser()}, {"pass", client.GetPass()}}
+                );
             }
+            else
+            {
+                throw new Exception("Error: Auth keys are empty");
+            }
+
+            var info = Factory.Factory.EvalAuthInfo(response);
+
+            if (info.code == 200)
+            {
+                return info;
+            }
+
+            throw new Exception("Error: "+info.message);
         }
 
-        public static bool validateGateway(Client client)
+        public static void ValidateGateway(Client client)
         {
-            var clientMode = client.getMode();
-            var authInfo = evalAuth(client);
+            if (client == null)
+            {
+                throw new Exception("Client object is not valid");
+            }
+
+            var clientMode = client.Live;
+
+            var authInfo = EvalAuth(client);
 
             if (authInfo.mode_key != authInfo.livemode)
             {
-
-                throw new Exception("Las llaves no corresponden al modo de la tienda.");
+                throw new Exception("Keys are diferent of store mode");
             }
 
             if (clientMode != authInfo.livemode)
             {
-                throw new Exception("El modo del cliente no corresponde al de la tienda.");
+                throw new Exception("Client mode is diferent of store mode");
             }
 
             if (clientMode != authInfo.mode_key)
             {
-                throw new Exception("El modo del cliente no corresponde al de las llaves.");
+                throw new Exception("Client mode is diferent of keys mode");
             }
-
-            return true;
         }
     }
 }

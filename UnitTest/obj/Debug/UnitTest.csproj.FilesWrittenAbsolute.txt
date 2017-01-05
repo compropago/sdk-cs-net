@@ -1,0 +1,9 @@
+/Users/Arthur/Desktop/packages/cp-cs/CompropagoSdk/UnitTest/obj/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/Users/Arthur/Desktop/packages/cp-cs/CompropagoSdk/UnitTest/bin/Debug/UnitTest.dll.mdb
+/Users/Arthur/Desktop/packages/cp-cs/CompropagoSdk/UnitTest/bin/Debug/UnitTest.dll
+/Users/Arthur/Desktop/packages/cp-cs/CompropagoSdk/UnitTest/obj/Debug/UnitTest.dll
+/Users/Arthur/Desktop/packages/cp-cs/CompropagoSdk/UnitTest/obj/Debug/UnitTest.dll.mdb
+/Users/Arthur/Desktop/packages/cp-cs/CompropagoSdk/UnitTest/bin/Debug/nunit.framework.dll
+/Users/Arthur/Desktop/packages/cp-cs/CompropagoSdk/UnitTest/bin/Debug/CompropagoSdk.dll
+/Users/Arthur/Desktop/packages/cp-cs/CompropagoSdk/UnitTest/bin/Debug/CompropagoSdk.dll.mdb
+/Users/Arthur/Desktop/packages/cp-cs/CompropagoSdk/UnitTest/bin/Debug/Newtonsoft.Json.dll

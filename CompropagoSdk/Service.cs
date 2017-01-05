@@ -1,412 +1,156 @@
 ﻿using System;
-using System.Net;
-using System.IO;
-using System.Text;
 using System.Collections.Generic;
+using System.Globalization;
+using CompropagoSdk.Factory.Models;
 using CompropagoSdk.Tools;
-using CompropagoSdk.Models;
-using CompropagoSdk.Factory.Abs;
-
 
 namespace CompropagoSdk
 {
     public class Service
     {
-        private Client client { get; set; }
-        private Dictionary<string, string> headers = new Dictionary<string, string>();
+
+        private readonly Client _client;
 
         public Service(Client client)
         {
-            this.client = client;
-            headers.Add("useragent",client.getContained());
+            _client = client;
         }
 
-
-        /**
-         * Obtiene el listado de proveedores diponibles
-         * 
-         * @param bool  auth  = false   Forzar Autentificación
-         * @param float limit = 0       Filtrar por limite de transacción
-         * @param bool  fetch = false   Forzar recuperación de proveedores por base de datos
-         * @return List<Provider>
-         */     
-        public List<Provider> listProviders(bool auth = false, float limit = 0, bool fetch = false)
+        public List<Provider> ListProviders(bool auth = false, double limit = 0, string currency = "MXN")
         {
-            if (auth)
-            {
-                Validations.validateGateway(this.client);
-            }
-
-            string uri = auth ? this.client.getUri() + "providers" : this.client.getUri() + "providers/true";
-
-            uri = (limit > 0) ? uri + "?order_total=" + limit : uri;
-
-            uri = fetch ? (
-                (limit > 0) ? uri + "&fetch=true" : uri + "?fetch=true"
-            ) : uri;
-
-            Uri requestUri = null;
-            Uri.TryCreate(uri, UriKind.Absolute, out requestUri);
-
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(requestUri);
-            request.Method = "GET";
+            string url;
+            Dictionary<string, string> keys;
 
             if (auth)
             {
-                request.ContentType = "application/x-www-form-urlencoded";
-                request.Headers.Add("Authorization", string.Concat("Basic ",
-                    (Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}", this.client.getFullAuth()))))));
+                url = _client.DeployUri + "providers/";
+                keys = new Dictionary<string,string> { {"user", _client.GetUser()}, {"pass", _client.GetPass()} };
             }
-
-
-
-            foreach (KeyValuePair<string, string> entry in this.headers)
+            else
             {
-                request.Headers.Add(entry.Key, entry.Value);
+                url = _client.DeployUri + "providers/true/";
+                keys = null;
             }
 
+            if (limit > 0)
+            {
+                url += "?order_total=" + limit;
+            }
 
+            if (limit > 0 && currency != "" && currency != "MXN")
+            {
+                url += "&currency=" + currency;
+            }
 
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            Stream respStream = response.GetResponseStream();
+            Console.WriteLine(url);
 
-            var reader = new StreamReader(respStream);
-            var resp = reader.ReadToEnd();
+            var response = Request.Get(url, keys);
 
-            var obj = Factory.Factory.listProviders(resp);
-
-            return obj;
+            return Factory.Factory.ListProviders(response);
         }
 
-
-        /**
-         * Verifica las datos de una orden en especifico
-         * 
-         * @param string orderId        Id de orden generada por ComproPago
-         * @return CpOrderInfo
-         */ 
-        public CpOrderInfo verifyOrder(string orderId)
+        public CpOrderInfo VerifyOrder(string orderId)
         {
-            Validations.validateGateway(this.client);
+            var response = Request.Get(
+                _client.DeployUri + "charges/" + orderId + "/",
+                new Dictionary<string,string> { {"user", _client.GetUser()}, {"pass", _client.GetPass()} }
+            );
 
-            var uri = this.client.getUri() + "charges/" + orderId;
-
-            Uri requestUri = null;
-            Uri.TryCreate(uri, UriKind.Absolute, out requestUri);
-
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(requestUri);
-            request.Method = "GET";
-
-            request.ContentType = "application/x-www-form-urlencoded";
-            request.Headers.Add("Authorization", string.Concat("Basic ",
-                (Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}", this.client.getFullAuth()))))));
-
-            foreach (KeyValuePair<string, string> entry in this.headers)
-            {
-                request.Headers.Add(entry.Key, entry.Value);
-            }
-
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            Stream respStream = response.GetResponseStream();
-
-            var reader = new StreamReader(respStream);
-            var resp = reader.ReadToEnd();
-
-            var obj = Factory.Factory.cpOrderInfo(resp);
-
-            return obj;
+            return Factory.Factory.CpOrderInfo(response);
         }
 
-
-        /**
-         * Genera ordenes de compra
-         * 
-         * @param PlaceOrderInfo info   Objeto con la informacion de la orden de compra
-         * @return NewOrderInfo 
-         */ 
-        public NewOrderInfo placeOrder(PlaceOrderInfo info)
+        public NewOrderInfo PlaceOrder(PlaceOrderInfo order)
         {
-            Validations.validateGateway(this.client);
-
-            var append =
-                "order_id=" + info.order_id +
-                "&order_price=" + info.order_price +
-                "&order_name=" + info.order_name +
-                "&customer_name=" + info.customer_name +
-                "&customer_email=" + info.customer_email +
-                "&image_url=" + info.image_url +
-                "&payment_type=" + info.payment_type +
-                "&app_client_name" + info.app_client_name +
-                "&app_client_version" + info.app_client_version;
-
-            var uri = this.client.getUri() + "charges/";
-
-            var postUrl = new StringBuilder();
-            postUrl.Append(append);
-
-            byte[] formBytes = ASCIIEncoding.Default.GetBytes(postUrl.ToString());
-
-            Uri requestUri = null;
-            Uri.TryCreate(uri, UriKind.Absolute, out requestUri);
-
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(requestUri);
-            request.Method = "POST";
-
-            request.ContentType = "application/x-www-form-urlencoded";
-            request.Headers.Add("Authorization", string.Concat("Basic ",
-                (Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}", this.client.getFullAuth()))))));
-
-            foreach (KeyValuePair<string, string> entry in this.headers)
+            var data = new Dictionary<string,string>
             {
-                request.Headers.Add(entry.Key, entry.Value);
-            }
+                {"order_id", order.order_id},
+                {"order_name", order.order_name},
+                {"order_price", order.order_price.ToString(CultureInfo.InvariantCulture)},
+                {"customer_name", order.customer_name},
+                {"customer_email", order.customer_email},
+                {"payment_type", order.payment_type},
+                {"currency", order.currency},
+                {"image_url", order.image_url},
+                {"app_client_name", order.app_client_name},
+                {"app_client_version", order.app_client_version}
+            };
 
-            using (Stream postStream = request.GetRequestStream())
-            {
-                postStream.Write(formBytes, 0, formBytes.Length);
-            }
+            var response = Request.Post(
+                _client.DeployUri + "charges/",
+                data,
+                new Dictionary<string,string> { {"user", _client.GetUser()}, {"pass", _client.GetPass()} }
+            );
 
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            Stream respStream = response.GetResponseStream();
-
-            var reader = new StreamReader(respStream);
-            var resp = reader.ReadToEnd();
-
-            var obj = Factory.Factory.newOrderInfo(resp);
-
-            return obj;
+            return Factory.Factory.NewOrderInfo(response);
         }
 
-
-        /**
-         * Envia las instrucciones de pago de una orden generada
-         * 
-         * @param string number         Numero al que se enviaran las instrucciones (10 digitos)
-         * @param string orderId        Id de orden generada por ComproPago
-         * @return SmsInfo
-         */ 
-        public SmsInfo sendSmsInstructions(string number, string orderId)
+        public SmsInfo SendSmsInstructions(string phone, string orderId)
         {
-            Validations.validateGateway(client);
-
-            var append = "customer_phone=" + number;
-
-            var uri = this.client.getUri() + "charges/"+orderId+"/sms";
-
-            var postUrl = new StringBuilder();
-            postUrl.Append(append);
-
-            byte[] formBytes = ASCIIEncoding.Default.GetBytes(postUrl.ToString());
-
-            Uri requestUri = null;
-            Uri.TryCreate(uri, UriKind.Absolute, out requestUri);
-
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(requestUri);
-            request.Method = "POST";
-
-            request.ContentType = "application/x-www-form-urlencoded";
-            request.Headers.Add("Authorization", string.Concat("Basic ",
-                (Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}", this.client.getFullAuth()))))));
-
-            foreach (KeyValuePair<string, string> entry in this.headers)
+            var data = new Dictionary<string,string>
             {
-                request.Headers.Add(entry.Key, entry.Value);
-            }
+                {"customer_phone", phone}
+            };
 
-            using (Stream postStream = request.GetRequestStream())
-            {
-                postStream.Write(formBytes, 0, formBytes.Length);
-            }
+            var response = Request.Post(
+                _client.DeployUri + "charges/" + orderId + "/sms/",
+                data,
+                new Dictionary<string,string> { {"user", _client.GetUser()}, {"pass", _client.GetPass()} }
+            );
 
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            Stream respStream = response.GetResponseStream();
-
-            var reader = new StreamReader(respStream);
-            var resp = reader.ReadToEnd();
-
-            var obj = Factory.Factory.smsInfo(resp);
-
-            return obj;
+            return Factory.Factory.SmsInfo(response);
         }
 
-
-        /**
-         * Registra un nuevo WebHook
-         * 
-         * @param string url            Url del webhook a registrar
-         * @return Webhook
-         */ 
-        public Webhook createWebhook(string url)
+        public List<Webhook> ListWebhooks()
         {
-            Validations.validateGateway(client);
+            var response = Request.Get(
+                _client.DeployUri + "webhooks/stores/",
+                new Dictionary<string,string> { {"user", _client.GetUser()}, {"pass", _client.GetPass()} }
+            );
 
-            var append = "url=" + url;
-
-            var uri = this.client.getUri() + "webhooks/stores";
-
-            var postUrl = new StringBuilder();
-            postUrl.Append(append);
-
-            byte[] formBytes = ASCIIEncoding.Default.GetBytes(postUrl.ToString());
-
-            Uri requestUri = null;
-            Uri.TryCreate(uri, UriKind.Absolute, out requestUri);
-
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(requestUri);
-            request.Method = "POST";
-
-            request.ContentType = "application/x-www-form-urlencoded";
-            request.Headers.Add("Authorization", string.Concat("Basic ",
-                (Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}", this.client.getFullAuth()))))));
-
-            foreach (KeyValuePair<string, string> entry in this.headers)
-            {
-                request.Headers.Add(entry.Key, entry.Value);
-            }
-
-            using (Stream postStream = request.GetRequestStream())
-            {
-                postStream.Write(formBytes, 0, formBytes.Length);
-            }
-
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            Stream respStream = response.GetResponseStream();
-
-            var reader = new StreamReader(respStream);
-            var resp = reader.ReadToEnd();
-
-            var obj = Factory.Factory.webhook(resp);
-
-            return obj;
+            return Factory.Factory.ListWebhooks(response);
         }
 
-
-        /**
-         * Regresa el listado de los webhooks existentes de una cuenta
-         * 
-         * @return List<Webhook>
-         */ 
-        public List<Webhook> listWebhooks()
+        public Webhook CreateWebhook(string url)
         {
-            Validations.validateGateway(client);
-
-            var uri = this.client.getUri() + "webhooks/stores";
-
-            Uri requestUri = null;
-            Uri.TryCreate(uri, UriKind.Absolute, out requestUri);
-
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(requestUri);
-            request.Method = "GET";
-
-            request.ContentType = "application/x-www-form-urlencoded";
-            request.Headers.Add("Authorization", string.Concat("Basic ",
-                (Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}", this.client.getFullAuth()))))));
-
-            foreach (KeyValuePair<string, string> entry in this.headers)
+            var data = new Dictionary<string, string>
             {
-                request.Headers.Add(entry.Key, entry.Value);
-            }
+                {"url", url}
+            };
 
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            Stream respStream = response.GetResponseStream();
+            var response = Request.Post(
+                _client.DeployUri + "webhooks/stores/",
+                data,
+                new Dictionary<string, string> { {"user", _client.GetUser()}, {"pass", _client.GetPass()} }
+            );
 
-            var reader = new StreamReader(respStream);
-            var resp = reader.ReadToEnd();
-
-            var obj = Factory.Factory.listWebhooks(resp);
-
-            return obj;
+            return Factory.Factory.Webhook(response);
         }
 
-
-        /**
-         * Actualiza la URL de un webhook
-         * 
-         * @param string webhookId       Id del webhook que se desea actualizar
-         * @param string url             Url nueva del webhook
-         * @return Webhook
-         */ 
-        public Webhook updateWebhook(string webhookId, string url)
+        public Webhook UpdateWebhook(string webhookId, string url)
         {
-            Validations.validateGateway(client);
-
-            var append = "url=" + url;
-
-            var uri = this.client.getUri() + "webhooks/stores/"+webhookId;
-
-            var postUrl = new StringBuilder();
-            postUrl.Append(append);
-
-            byte[] formBytes = ASCIIEncoding.Default.GetBytes(postUrl.ToString());
-
-            Uri requestUri = null;
-            Uri.TryCreate(uri, UriKind.Absolute, out requestUri);
-
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(requestUri);
-            request.Method = "PUT";
-
-            request.ContentType = "application/x-www-form-urlencoded";
-            request.Headers.Add("Authorization", string.Concat("Basic ",
-                (Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}", this.client.getFullAuth()))))));
-
-            foreach (KeyValuePair<string, string> entry in this.headers)
+            var data = new Dictionary<string, string>
             {
-                request.Headers.Add(entry.Key, entry.Value);
-            }
+                {"url", url}
+            };
 
-            using (Stream postStream = request.GetRequestStream())
-            {
-                postStream.Write(formBytes, 0, formBytes.Length);
-            }
+            var response = Request.Put(
+                _client.DeployUri + "webhooks/stores/" + webhookId + "/",
+                data,
+                new Dictionary<string, string> { {"user", _client.GetUser()}, {"pass", _client.GetPass()} }
+            );
 
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            Stream respStream = response.GetResponseStream();
-
-            var reader = new StreamReader(respStream);
-            var resp = reader.ReadToEnd();
-
-            var obj = Factory.Factory.webhook(resp);
-
-            return obj;
+            return Factory.Factory.Webhook(response);
         }
 
-
-        /**
-         * Eliminar un webhook
-         * 
-         * @param string webhookId       Id del webhook registrado
-         * @return Webhook
-         */ 
-        public Webhook deleteWebhook(string webhookId)
+        public Webhook DeleteWebhook(string webhookId)
         {
-            Validations.validateGateway(client);
+            var response = Request.Delete(
+                _client.DeployUri + "webhooks/stores/" + webhookId + "/",
+                null,
+                new Dictionary<string, string> { {"user", _client.GetUser()}, {"pass", _client.GetPass()} }
+            );
 
-            var uri = this.client.getUri() + "webhooks/stores/" + webhookId;
-
-            Uri requestUri = null;
-            Uri.TryCreate(uri, UriKind.Absolute, out requestUri);
-
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(requestUri);
-            request.Method = "DELETE";
-
-            request.ContentType = "application/x-www-form-urlencoded";
-            request.Headers.Add("Authorization", string.Concat("Basic ",
-                (Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}", this.client.getFullAuth()))))));
-
-            foreach (KeyValuePair<string, string> entry in this.headers)
-            {
-                request.Headers.Add(entry.Key, entry.Value);
-            }
-
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            Stream respStream = response.GetResponseStream();
-
-            var reader = new StreamReader(respStream);
-            var resp = reader.ReadToEnd();
-
-            var obj = Factory.Factory.webhook(resp);
-
-            return obj;
+            return Factory.Factory.Webhook(response);
         }
     }
 }
