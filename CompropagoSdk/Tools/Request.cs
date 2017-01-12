@@ -27,6 +27,7 @@ namespace CompropagoSdk.Tools
             }
             catch (Exception e)
             {
+				Console.WriteLine(e.Message);
                 return true;
             }
         }

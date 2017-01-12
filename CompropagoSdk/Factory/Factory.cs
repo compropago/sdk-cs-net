@@ -1,6 +1,4 @@
-﻿using System;
-using System.Web.Script.Serialization;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using CompropagoSdk.Factory.Models;
 using Newtonsoft.Json;
 

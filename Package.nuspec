@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>ComproPago</id>
-    <version>3.0.0</version>
+    <version>3.0.1</version>
     <authors>Eduardo Aguilar</authors>
     <owners>ComproPago</owners>
     <licenseUrl>https://github.com/compropago/sdk-cs-net/blob/master/LICENSE.txt</licenseUrl>
@@ -11,18 +11,18 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>SDK para el consumo de los servicios de ComproPago</description>
     <releaseNotes>
-      * Feature: Multi currency place orders
-      * Feature: Unification of Models for Factory pattern
-      * Feature: Microsoft Code styling for attributes and methods
-      * Feature: Separete http requests from Service class
-      * Created: Class CompropagoSdk.Tools.Http
-      * Created: Class CompropagoSdk.Tools.Request
-      * Removed: Abstract clases
-      * Removed: contained param in Client constructor
-      * Removed: fetch param in ListProviders method
-      * Dependency-Added: Newtonsoft.Json
+* Feature: Multi currency place orders
+* Feature: Unification of Models for Factory pattern
+* Feature: Microsoft Code styling for attributes and methods
+* Feature: Separete http requests from Service class
+* Created: Class CompropagoSdk.Tools.Http
+* Created: Class CompropagoSdk.Tools.Request
+* Removed: Abstract clases
+* Removed: contained param in Client constructor
+* Removed: fetch param in ListProviders method
+* Dependency-Added: Newtonsoft.Json
     </releaseNotes>
-    <copyright>Copyright 2016</copyright>
+    <copyright>Copyright 2017</copyright>
     <tags>SDK C# ComproPago Payment Gateway</tags>
 
     <dependencies>

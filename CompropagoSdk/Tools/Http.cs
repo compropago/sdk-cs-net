@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Text;
-using System.Web.Script.Serialization;
 using Newtonsoft.Json;
 
 namespace CompropagoSdk.Tools
@@ -65,7 +64,7 @@ namespace CompropagoSdk.Tools
 
             if (_auth != null)
             {
-                var encode = Convert.ToBase64String(Encoding.UTF8.GetBytes($"{_auth}"));
+                var encode = Convert.ToBase64String(Encoding.UTF8.GetBytes(_auth));
                 request.Headers.Add("Authorization", "Basic "+encode);
             }
 
