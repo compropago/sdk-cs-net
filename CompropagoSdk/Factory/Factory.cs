@@ -119,6 +119,11 @@ namespace CompropagoSdk.Factory
                 source.Add("currency", "MXN");
             }
 
+			if (!source.ContainsKey("expiration_time"))
+			{
+				source.Add("expiration_time", null);
+			}
+
             if (!source.ContainsKey("image_url"))
             {
                 source.Add("image_url", "");
