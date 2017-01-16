@@ -47,7 +47,7 @@ namespace UnitTest
             try
             {
                 var client = new Client(_publicKey, _privateKey, _mode);
-                res = true;
+				res = client is Client;
             }
             catch (Exception e)
             {

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Web.Script.Serialization;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using CompropagoSdk.Factory.Models;
 using Newtonsoft.Json;
 
@@ -120,6 +118,11 @@ namespace CompropagoSdk.Factory
             {
                 source.Add("currency", "MXN");
             }
+
+			if (!source.ContainsKey("expiration_time"))
+			{
+				source.Add("expiration_time", null);
+			}
 
             if (!source.ContainsKey("image_url"))
             {
