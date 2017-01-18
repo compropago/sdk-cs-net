@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using NUnit.Framework;
 using CompropagoSdk;
 using CompropagoSdk.Factory;
 using CompropagoSdk.Factory.Models;
 using CompropagoSdk.Tools;
-using NUnit.Framework.Constraints;
 
 namespace UnitTest
 {
@@ -192,6 +190,33 @@ namespace UnitTest
 
             Assert.True(res);
         }
+
+		[Test]
+		public void TestPlaceOrderExpdate()
+		{
+			var res = false;
+            try
+            {
+                var client = new Client(_publicKey, _privateKey, _mode);
+
+                var time = DateTime.UtcNow - new DateTime(1970, 1, 1);
+                var epoch = (int)time.TotalSeconds + (6 * 60 * 60);
+
+                _orderInfo.Add("expiration_time", epoch.ToString());
+
+                var order = Factory.PlaceOrderInfo(_orderInfo);
+
+                var newOrder = client.Api.PlaceOrder(order);
+
+                res = (newOrder is NewOrderInfo) && newOrder.exp_date.Equals(epoch.ToString());
+            } 
+            catch (Exception e) 
+            {
+                Console.WriteLine("====>> "+e.Message);
+            }
+
+            Assert.True(res);
+		}
 
         [Test]
         public void TestVerifyOrder()
