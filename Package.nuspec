@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>ComproPago</id>
-    <version>3.0.2</version>
+    <version>3.0.2.1</version>
     <authors>Eduardo Aguilar</authors>
     <owners>ComproPago</owners>
     <licenseUrl>https://github.com/compropago/sdk-cs-net/blob/master/LICENSE.txt</licenseUrl>
@@ -11,9 +11,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>SDK para el consumo de los servicios de ComproPago</description>
     <releaseNotes>
-* Feature: Add expiration_time param in PlaceOrderInfo object
-* Bug-fix: Incompatible casting for auth keys
-* Cleanup: Deprecated dependenci imports
+* Bug-fix: Missing argument in expiration_time param
     </releaseNotes>
     <copyright>Copyright 2017</copyright>
     <tags>SDK C# ComproPago Payment Gateway</tags>

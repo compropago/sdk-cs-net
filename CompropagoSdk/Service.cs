@@ -70,6 +70,7 @@ namespace CompropagoSdk
                 {"customer_email", order.customer_email},
                 {"payment_type", order.payment_type},
                 {"currency", order.currency},
+				{"expiration_time", order.expiration_time},
                 {"image_url", order.image_url},
                 {"app_client_name", order.app_client_name},
                 {"app_client_version", order.app_client_version}
