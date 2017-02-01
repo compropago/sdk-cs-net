@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>ComproPago</id>
-    <version>3.0.2.1</version>
+    <version>3.0.3</version>
     <authors>Eduardo Aguilar</authors>
     <owners>ComproPago</owners>
     <licenseUrl>https://github.com/compropago/sdk-cs-net/blob/master/LICENSE.txt</licenseUrl>
@@ -11,7 +11,8 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>SDK para el consumo de los servicios de ComproPago</description>
     <releaseNotes>
-* Bug-fix: Missing argument in expiration_time param
+* Feature: Add availability attribute in Provider object
+* Deprecated: Remove auth param in ListProviders method
     </releaseNotes>
     <copyright>Copyright 2017</copyright>
     <tags>SDK C# ComproPago Payment Gateway</tags>
