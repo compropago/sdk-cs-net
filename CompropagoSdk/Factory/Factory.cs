@@ -155,14 +155,14 @@ namespace CompropagoSdk.Factory
             return obj;
         }
 
-        public static List<Provider> ListProviders(string source = null)
+        public static Provider[] ListProviders(string source = null)
         {
             if (source == null)
             {
                 return null;
             }
 
-            var obj = JsonConvert.DeserializeObject<List<Provider>>(source);
+            var obj = JsonConvert.DeserializeObject<Provider[]>(source);
 
             return obj;
         }
@@ -215,14 +215,14 @@ namespace CompropagoSdk.Factory
             return obj;
         }
 
-        public static List<Webhook> ListWebhooks(string source = null)
+        public static Webhook[] ListWebhooks(string source = null)
         {
             if (source == null)
             {
                 return null;
             }
 
-            var obj = JsonConvert.DeserializeObject<List<Webhook>>(source);
+            var obj = JsonConvert.DeserializeObject<Webhook[]>(source);
 
             return obj;
         }

@@ -103,7 +103,7 @@ namespace UnitTest
             {
                 var client = new Client(_publicKey, _privateKey, _mode);
 
-                var providers = client.Api.ListProviders(false, _limit);
+                var providers = client.Api.ListProviders(_limit);
 
                 foreach (var provider in providers)
                 {
@@ -124,34 +124,14 @@ namespace UnitTest
         }
 
         [Test]
-        public void TestProvidersAuth()
-        {
-            var res = false;
-            try
-            {
-                var client = new Client(_publicKey, _privateKey, _mode);
-
-                var providers = client.Api.ListProviders(true);
-
-                res = providers[0] is Provider;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("====>> "+e.Message);
-            }
-
-            Assert.True(res);
-        }
-
-        [Test]
-        public void TestProvidersAuthLimit()
+        public void TestProvidersCurrency()
         {
             var res = true;
-            try
+            try 
             {
                 var client = new Client(_publicKey, _privateKey, _mode);
 
-                var providers = client.Api.ListProviders(true, _limit);
+                var providers = client.Api.ListProviders(700, "USD");
 
                 foreach (var provider in providers)
                 {
@@ -164,7 +144,7 @@ namespace UnitTest
             }
             catch (Exception e)
             {
-                Console.WriteLine("====>> "+e.Message);
+                Console.WriteLine("====>> " + e.Message);
                 res = false;
             }
 
