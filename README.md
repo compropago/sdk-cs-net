@@ -129,10 +129,6 @@ var client = new Client(
 
 ### Uso Básico del SDK
 
-> Consulta la documentación de la librería CS-SDK de ComproPago para conocer más de sus capacidades, configuraciones y 
-métodos.
-
-
 #### Llamados al los servicios por SDK
 
 Para poder hacer uso de los servicios de ComproPago, solo debes llamar a los métodos contenidos en la propiedad **api**
@@ -148,11 +144,12 @@ de la variable **client** como se muestra a continuación.
 /**
  * @param string order_id          Id de la orden
  * @param string order_name        Nombre del producto o productos de la orden
- * @param float  order_price       Monto total de la orden
+ * @param string  order_price       Monto total de la orden
  * @param string customer_name     Nombre completo del cliente
  * @param string customer_email    Correo electronico del cliente
  * @param string payment_type      (default = OXXO) Valor del atributo internal_name' de un objeto 'Provider'
  * @param string currency          (default = MXN) Codigo de la moneda con la que se esta creando el cargo
+ * @param string expiration_time   (default = null) fecha de expiración de la orden en formato epoch
  */
 var orderInfo = new Dictionary<string, string>
 {
@@ -163,6 +160,7 @@ var orderInfo = new Dictionary<string, string>
     {"customer_email", "eduardo.aguilar@compropago.com"},
     {"payment_type", "OXXO"},
     {"currency", "USD"},
+    {"expiration_time", "1484786210"}
 };
 /**
  * Creación del objeto PlaceOrderInfo
@@ -225,7 +223,7 @@ public CpOrderInfo verifyOrder(string orderId);
 
 Para obtener el listado de Proveedores disponibles para realizar el pago de las ordenes es necesario consutar el método
 **ListProviders** que se encuentra alojado en el atributo **Api** del objeto **Client** y el cual regresa una instancia
-de tipo **List<Provider>**
+de tipo **Provider[]**
 
 ```CSharp
 var providers = client.Api.ListProviders();
@@ -235,11 +233,11 @@ var providers = client.Api.ListProviders();
 
 ```CSharp
 /**
- * @param bool  auth  = false   (default = false) Forzar autenficación para obtener proveedores especificos de una tienda
- * @param float limit = 0       (default = 0) limite minimo de transaccion que deberan tener los proveedores a obtener
+ * @param double limit       (default = 0) limite minimo de transaccion que deberan tener los proveedores a obtener
+ * @param string currency    (default = MXN) tipo de moneda a la que pertenece el parametro limit (MXN, USD, EUR, GBP)
  * @return List<Provider>
  */
-public List<Provider> ListProviders(bool auth = false, double limit = 0);
+public Provider[] ListProviders(double limit = 0, string currency = "MXN");
 ```
 
 ##### Envio de instrucciones SMS
@@ -357,7 +355,7 @@ public Webhook DeleteWebhook(string webhookId);
 
 Para obtener la lista de webhooks registrados den una cuenta, se debe de llamar al método **ListWebhook** que se 
 encuentra alojado en el atributo **Api** del objeto **Client** y el cual regresa una instancia de tipo 
-**List< Webhook >**
+**Webhook[]**
 
 ```CSharp
 var updateWebhook = client.Api.ListWebhooks();
@@ -369,5 +367,5 @@ var updateWebhook = client.Api.ListWebhooks();
 /**
  * @return List<Webhook>
  */
-public List<Webhook> ListWebhooks();
+public Webhook[] ListWebhooks();
 ```
