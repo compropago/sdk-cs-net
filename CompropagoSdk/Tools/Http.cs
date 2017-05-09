@@ -44,7 +44,7 @@ namespace CompropagoSdk.Tools
             }
         }
 
-        public void SetData(Dictionary<string, object> data)
+        public void SetData(Dictionary<string, string> data)
         {
             _data = data != null ? JsonConvert.SerializeObject(data) : null;
         }

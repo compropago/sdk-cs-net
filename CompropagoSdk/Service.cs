@@ -50,9 +50,7 @@ namespace CompropagoSdk
 
         public NewOrderInfo PlaceOrder(PlaceOrderInfo order)
         {
-            
-            var ip = this.GetIPAddress();
-            var data = new Dictionary<string, object>
+            var data = new Dictionary<string,string>
             {
                 {"order_id", order.order_id},
                 {"order_name", order.order_name},
@@ -61,33 +59,19 @@ namespace CompropagoSdk
                 {"customer_email", order.customer_email},
                 {"payment_type", order.payment_type},
                 {"currency", order.currency},
-                {"expiration_time", order.expiration_time},
+				{"expiration_time", order.expiration_time},
                 {"image_url", order.image_url},
                 {"app_client_name", order.app_client_name},
-                {"app_client_version", order.app_client_version},
-                {"customer", new Dictionary<string, object> {
-		                        {"name", order.order_id},
-		                        {"email", order.customer_email},
-		                        {"phone", order.customer_phone},
-		                        {"cp", order.order_id},
-		                        {"ip_address", ip},
-		                        {"glocation",new Dictionary<string, string> {
-				                                {"lat", order.latitude},
-				                                {"lon", order.longitude}
-                                                }
-                                }
-                    }
-                }
+                {"app_client_version", order.app_client_version}
             };
 
-
-            var response = Request.Post(_client.DeployUri +"charges/", data, getAuth());
+            var response = Request.Post(_client.DeployUri + "charges/", data, getAuth());
             return Factory.Factory.NewOrderInfo(response);
         }
 
         public SmsInfo SendSmsInstructions(string phone, string orderId)
         {
-            var data = new Dictionary<string,object>
+            var data = new Dictionary<string,string>
             {
                 {"customer_phone", phone}
             };
@@ -103,19 +87,19 @@ namespace CompropagoSdk
         }
 
         public Webhook CreateWebhook(string url)
-		{
-            var data = new Dictionary<string, object>
-			{
-				{"url", url}
-			};
+        {
+            var data = new Dictionary<string, string>
+            {
+                {"url", url}
+            };
 
-			var response = Request.Post(_client.DeployUri + "webhooks/stores/", data, getAuth());
-			return Factory.Factory.Webhook(response);
-		}
+            var response = Request.Post(_client.DeployUri + "webhooks/stores/", data, getAuth());
+            return Factory.Factory.Webhook(response);
+        }
 
         public Webhook UpdateWebhook(string webhookId, string url)
         {
-            var data = new Dictionary<string, object>
+            var data = new Dictionary<string, string>
             {
                 {"url", url}
             };
@@ -129,32 +113,5 @@ namespace CompropagoSdk
             var response = Request.Delete(_client.DeployUri + "webhooks/stores/" + webhookId + "/", null, getAuth());
             return Factory.Factory.Webhook(response);
         }
-
-        private string GetIPAddress()
-		{
-			System.Web.HttpContext context = System.Web.HttpContext.Current;
-
-            if (context == null)
-            {
-
-                return "";
-            }
-            else
-            {
-
-                string ipAddress = context.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
-
-                if (!string.IsNullOrEmpty(ipAddress))
-                {
-                    string[] addresses = ipAddress.Split(',');
-                    if (addresses.Length != 0)
-                    {
-                        return addresses[0];
-                    }
-                }
-
-                return context.Request.ServerVariables["REMOTE_ADDR"];
-            }
-		}
     }
 }
