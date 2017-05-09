@@ -52,9 +52,6 @@ namespace CompropagoSdk
         {
             
             var ip = this.GetIPAddress();
-            if (string.IsNullOrEmpty(ip)){
-                ip = null;
-            }
             var data = new Dictionary<string, object>
             {
                 {"order_id", order.order_id},
