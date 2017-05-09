@@ -26,15 +26,15 @@ namespace UnitTest
             _mode = false;
             _orderInfo = new Dictionary<string, string>
             {
-                {"order_id", "123"},
+                {"order_id", "ABC"},
                 {"order_name", "M4 sdk CS.NET"},
-                {"order_price", "123.45"},
-                {"customer_name", "Eduardo"},
-                {"customer_email", "eduardo.aguilar@compropago.com"},
+                {"order_price", "5"},
+                {"customer_name", "Christian"},
+                {"customer_email", "christian@compropago.com"},
                 {"payment_type", "OXXO"},
-                {"currency", "USD"}
+                {"currency", "MXN"}
             };
-            _phoneNumber = "5561463627";
+            _phoneNumber = "5546541385";
             _limit = 15000;
         }
 

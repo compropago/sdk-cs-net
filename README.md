@@ -7,7 +7,7 @@ La librería de `ComproPago SDK C#.NET` te permite interactuar con el API de Com
 También cuenta con los métodos necesarios para facilitar el desarrollo por medio de los servicios
 más utilizados (SDK).
 
-Con ComproPago puede recibir pagos en OXXO, 7Eleven y más tiendas en todo México.
+Con ComproPago puede recibir pagos en 7Eleven, Extra y más tiendas en todo México.
 
 [Registrarse en ComproPago](https://compropago.com)
 
@@ -147,7 +147,7 @@ de la variable **client** como se muestra a continuación.
  * @param string  order_price       Monto total de la orden
  * @param string customer_name     Nombre completo del cliente
  * @param string customer_email    Correo electronico del cliente
- * @param string payment_type      (default = OXXO) Valor del atributo internal_name' de un objeto 'Provider'
+ * @param string payment_type      (default = SEVEN_ELEVEN) Valor del atributo internal_name' de un objeto 'Provider'
  * @param string currency          (default = MXN) Codigo de la moneda con la que se esta creando el cargo
  * @param string expiration_time   (default = null) fecha de expiración de la orden en formato epoch
  */
@@ -158,7 +158,7 @@ var orderInfo = new Dictionary<string, string>
     {"order_price", "123.45"},
     {"customer_name", "Eduardo"},
     {"customer_email", "eduardo.aguilar@compropago.com"},
-    {"payment_type", "OXXO"},
+    {"payment_type", "SEVEN_ELEVEN"},
     {"currency", "USD"},
     {"expiration_time", "1484786210"}
 };
