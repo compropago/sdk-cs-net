@@ -27,8 +27,8 @@ namespace CompropagoSdk.Tools
             }
             catch (Exception e)
             {
-				Console.WriteLine(e.Message);
-                return true;
+                Console.WriteLine(e.Message);
+    return true;
             }
         }
 
@@ -51,7 +51,7 @@ namespace CompropagoSdk.Tools
 
         public static string Post(
             string url,
-            Dictionary<string, string> data = null,
+            Dictionary<string, object> data = null,
             Dictionary<string, string> auth = null,
             Dictionary<string, string> headers = null
         )
@@ -70,7 +70,7 @@ namespace CompropagoSdk.Tools
 
         public static string Put(
             string url,
-            Dictionary<string, string> data = null,
+            Dictionary<string, object> data = null,
             Dictionary<string, string> auth = null,
             Dictionary<string, string> headers = null
         )
@@ -89,7 +89,7 @@ namespace CompropagoSdk.Tools
 
         public static string Delete(
             string url,
-            Dictionary<string, string> data = null,
+            Dictionary<string, object> data = null,
             Dictionary<string, string> auth = null,
             Dictionary<string, string> headers = null
         )

@@ -49,6 +49,10 @@
       <Project>{A3DB8F7A-7DDA-40D3-B525-6FBAF609B5E1}</Project>
       <Name>CompropagoSdk</Name>
     </ProjectReference>
+    <ProjectReference Include="..\UnitTest\UnitTest.csproj">
+      <Project>{ED2448E5-E7EF-432D-9633-36198F75E055}</Project>
+      <Name>UnitTest</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
