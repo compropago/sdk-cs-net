@@ -66,18 +66,18 @@ namespace CompropagoSdk
                 {"app_client_name", order.app_client_name},
                 {"app_client_version", order.app_client_version},
                 {"customer", new Dictionary<string, object> {
-		                        {"name", order.order_id},
-		                        {"email", order.customer_email},
-		                        {"phone", order.customer_phone},
-		                        {"cp", order.order_id},
-		                        {"ip_address", ip},
-		                        {"glocation",new Dictionary<string, string> {
-				                                {"lat", order.latitude},
-				                                {"lon", order.longitude}
-                                                }
-                                }
+                        {"name", order.customer_name},
+		                {"email", order.customer_email},
+		                {"phone", order.customer_phone},
+                        {"cp", order.cp},
+		                {"ip_address", ip},
+		                {"glocation",new Dictionary<string, string> {
+				                  {"lat", order.latitude},
+				                  {"lon", order.longitude}
+                                    }
+                          }
                     }
-                }
+               }
             };
 
 
