@@ -15,11 +15,27 @@ namespace CompropagoSdk.Tools
         private string _method;
         private Dictionary<string,string> _extraHeaders;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="T:CompropagoSdk.Tools.Http"/> class.
+        /// </summary>
+        /// <param name="url">URL.</param>
+        /// 
+        /// <remarks>
+        /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
+        /// </remarks>
         public Http(string url)
         {
             _url = url;
         }
 
+        /// <summary>
+        /// Sets the method.
+        /// </summary>
+        /// <param name="method">Method.</param>
+        /// 
+        /// <remarks>
+        /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
+        /// </remarks>
         public void SetMethod(string method)
         {
             if (method == "GET" || method == "POST" || method == "PUT" || method == "DELETE")
@@ -32,6 +48,14 @@ namespace CompropagoSdk.Tools
             }
         }
 
+        /// <summary>
+        /// Sets the auth.
+        /// </summary>
+        /// <param name="auth">Auth.</param>
+        /// 
+        /// <remarks>
+        /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
+        /// </remarks>
         public void SetAuth(Dictionary<string,string> auth)
         {
             if (auth != null && auth.ContainsKey("user") && auth.ContainsKey("pass"))
@@ -44,16 +68,40 @@ namespace CompropagoSdk.Tools
             }
         }
 
+        /// <summary>
+        /// Sets the data.
+        /// </summary>
+        /// <param name="data">Data.</param>
+        /// 
+        /// <remarks>
+        /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
+        /// </remarks>
         public void SetData(Dictionary<string, object> data)
         {
             _data = data != null ? JsonConvert.SerializeObject(data) : null;
         }
 
+        /// <summary>
+        /// Sets the extra headers.
+        /// </summary>
+        /// <param name="headers">Headers.</param>
+        /// 
+        /// <remarks>
+        /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
+        /// </remarks>
         public void SetExtraHeaders(Dictionary<string, string> headers)
         {
             _extraHeaders = headers ?? null;
         }
 
+        /// <summary>
+        /// Executes the request.
+        /// </summary>
+        /// <returns>The request.</returns>
+        /// 
+        /// <remarks>
+        /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
+        /// </remarks>
         public string ExecuteRequest()
         {
             Uri requestUri;
