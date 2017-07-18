@@ -6,6 +6,15 @@ namespace CompropagoSdk.Tools
 {
     public class Validations
     {
+        /// <summary>
+        /// Evals the auth.
+        /// </summary>
+        /// <returns>The auth.</returns>
+        /// <param name="client">Client.</param>
+        /// 
+        /// <remarks>
+        /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
+        /// </remarks>
         public static EvalAuthInfo EvalAuth(Client client)
         {
             string response;
@@ -32,6 +41,14 @@ namespace CompropagoSdk.Tools
             throw new Exception("Error: "+info.message);
         }
 
+        /// <summary>
+        /// Validates the gateway.
+        /// </summary>
+        /// <param name="client">Client.</param>
+        /// 
+        /// <remarks>
+        /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
+        /// </remarks>
         public static void ValidateGateway(Client client)
         {
             if (client == null)

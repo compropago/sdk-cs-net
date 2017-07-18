@@ -6,6 +6,15 @@ namespace CompropagoSdk.Factory
 {
     public class Factory
     {
+        /// <summary>
+        /// Return instance of <see cref="T:CompropagoSdk.Factory.Models.CpOrderInfo"/>.
+        /// </summary>
+        /// <returns>The order info.</returns>
+        /// <param name="source">Source.</param>
+        /// 
+        /// <remarks>
+        /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
+        /// </remarks>
         public static CpOrderInfo CpOrderInfo(string source = null)
         {
             if (source == null)
@@ -18,6 +27,15 @@ namespace CompropagoSdk.Factory
             return obj;
         }
 
+        /// <summary>
+        /// Return instance of <see cref="T:CompropagoSdk.Factory.Models.Customer"/>.
+        /// </summary>
+        /// <returns>The customer.</returns>
+        /// <param name="source">Source.</param>
+        /// 
+        /// <remarks>
+        /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
+        /// </remarks>
         public static Customer Customer(string source = null)
         {
             if (source == null)
@@ -30,6 +48,15 @@ namespace CompropagoSdk.Factory
             return obj;
         }
 
+        /// <summary>
+        /// Return instance of <see cref="T:CompropagoSdk.Factory.Models.EvalAuthInfo"/>.
+        /// </summary>
+        /// <returns>The auth info.</returns>
+        /// <param name="source">Source.</param>
+        /// 
+        /// <remarks>
+        /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
+        /// </remarks>
         public static EvalAuthInfo EvalAuthInfo(string source = null)
         {
             if (source == null)
@@ -42,6 +69,15 @@ namespace CompropagoSdk.Factory
             return obj;
         }
 
+        /// <summary>
+        /// Return instance of <see cref="T:CompropagoSdk.Factory.Models.FeeDetails"/>.
+        /// </summary>
+        /// <returns>The details.</returns>
+        /// <param name="source">Source.</param>
+        /// 
+        /// <remarks>
+        /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
+        /// </remarks>
         public static FeeDetails FeeDetails(string source = null)
         {
             if (source == null)
@@ -54,6 +90,15 @@ namespace CompropagoSdk.Factory
             return obj;
         }
 
+        /// <summary>
+        /// Return instance of <see cref="T:CompropagoSdk.Factory.Models.InstructionDetails"/>
+        /// </summary>
+        /// <returns>The details.</returns>
+        /// <param name="source">Source.</param>
+        /// 
+        /// <remarks>
+        /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
+        /// </remarks>
         public static InstructionDetails InstructionDetails(string source = null)
         {
             if (source == null)
@@ -66,6 +111,15 @@ namespace CompropagoSdk.Factory
             return obj;
         }
 
+        /// <summary>
+        /// Return instance of <see cref="T:CompropagoSdk.Factory.Models.Instructions"/>
+        /// </summary>
+        /// <returns>The instructions.</returns>
+        /// <param name="source">Source.</param>
+        /// 
+        /// <remarks>
+        /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
+        /// </remarks>
         public static Instructions Instructions(string source = null)
         {
             if (source == null)
@@ -78,6 +132,11 @@ namespace CompropagoSdk.Factory
             return obj;
         }
 
+        /// <summary>
+        /// Return instance of <see cref="T:CompropagoSdk.Factory.Models.NewOrderInfo"/>
+        /// </summary>
+        /// <returns>The order info.</returns>
+        /// <param name="source">Source.</param>
         public static NewOrderInfo NewOrderInfo(string source = null)
         {
             if (source == null)
@@ -90,6 +149,15 @@ namespace CompropagoSdk.Factory
             return obj;
         }
 
+        /// <summary>
+        /// Return instance of <see cref="T:CompropagoSdk.Factory.Models.OrderInfo"/>
+        /// </summary>
+        /// <returns>The info.</returns>
+        /// <param name="source">Source.</param>
+        /// 
+        /// <remarks>
+        /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
+        /// </remarks>
         public static OrderInfo OrderInfo(string source = null)
         {
             if (source == null)
@@ -102,6 +170,15 @@ namespace CompropagoSdk.Factory
             return obj;
         }
 
+        /// <summary>
+        /// Return instance of <see cref="T:CompropagoSdk.Factory.Models.PlaceOrderInfo"/>
+        /// </summary>
+        /// <returns>The order info.</returns>
+        /// <param name="source">Source.</param>
+        /// 
+        /// <remarks>
+        /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
+        /// </remarks>
         public static PlaceOrderInfo PlaceOrderInfo(Dictionary<string,string> source = null)
         {
             if (source == null)
@@ -143,6 +220,15 @@ namespace CompropagoSdk.Factory
             return JsonConvert.DeserializeObject<PlaceOrderInfo>(json);
         }
 
+        /// <summary>
+        /// Return instance of <see cref="T:CompropagoSdk.Factory.Models.Provider"/>
+        /// </summary>
+        /// <returns>The provider.</returns>
+        /// <param name="source">Source.</param>
+        /// 
+        /// <remarks>
+        /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
+        /// </remarks>
         public static Provider Provider(string source = null)
         {
             if (source == null)
@@ -155,6 +241,15 @@ namespace CompropagoSdk.Factory
             return obj;
         }
 
+        /// <summary>
+        /// Return array of <see cref="T:CompropagoSdk.Factory.Models.Provider"/>
+        /// </summary>
+        /// <returns>The providers.</returns>
+        /// <param name="source">Source.</param>
+        /// 
+        /// <remarks>
+        /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
+        /// </remarks>
         public static Provider[] ListProviders(string source = null)
         {
             if (source == null)
@@ -167,6 +262,15 @@ namespace CompropagoSdk.Factory
             return obj;
         }
 
+        /// <summary>
+        /// Return instance of <see cref="T:CompropagoSdk.Factory.Models.SmsData"/>
+        /// </summary>
+        /// <returns>The data.</returns>
+        /// <param name="source">Source.</param>
+        /// 
+        /// <remarks>
+        /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
+        /// </remarks>
         public static SmsData SmsData(string source = null)
         {
             if (source == null)
@@ -179,6 +283,15 @@ namespace CompropagoSdk.Factory
             return obj;
         }
 
+        /// <summary>
+        /// Return instance of <see cref="T:CompropagoSdk.Factory.Models.SmsInfo"/>
+        /// </summary>
+        /// <returns>The info.</returns>
+        /// <param name="source">Source.</param>
+        /// 
+        /// <remarks>
+        /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
+        /// </remarks>
         public static SmsInfo SmsInfo(string source = null)
         {
             if (source == null)
@@ -191,6 +304,15 @@ namespace CompropagoSdk.Factory
             return obj;
         }
 
+        /// <summary>
+        /// Return instance of <see cref="T:CompropagoSdk.Factory.Models.SmsObject"/>
+        /// </summary>
+        /// <returns>The object.</returns>
+        /// <param name="source">Source.</param>
+        /// 
+        /// <remarks>
+        /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
+        /// </remarks>
         public static SmsObject SmsObject(string source = null)
         {
             if (source == null)
@@ -203,6 +325,15 @@ namespace CompropagoSdk.Factory
             return obj;
         }
 
+        /// <summary>
+        /// Return instance of <see cref="T:CompropagoSdk.Factory.Models.Webhook"/>
+        /// </summary>
+        /// <returns>The webhook.</returns>
+        /// <param name="source">Source.</param>
+        /// 
+        /// <remarks>
+        /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
+        /// </remarks>
         public static Webhook Webhook(string source = null)
         {
             if (source == null)
@@ -215,6 +346,15 @@ namespace CompropagoSdk.Factory
             return obj;
         }
 
+        /// <summary>
+        /// Return array of <see cref="T:CompropagoSdk.Factory.Models.Webhook"/>
+        /// </summary>
+        /// <returns>The webhooks.</returns>
+        /// <param name="source">Source.</param>
+        /// 
+        /// <remarks>
+        /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
+        /// </remarks>
         public static Webhook[] ListWebhooks(string source = null)
         {
             if (source == null)

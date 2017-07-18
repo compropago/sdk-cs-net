@@ -7,6 +7,15 @@ namespace CompropagoSdk.Tools
 {
     public class Request
     {
+        /// <summary>
+        /// Validates the response.
+        /// </summary>
+        /// <returns><c>true</c>, if response was validated, <c>false</c> otherwise.</returns>
+        /// <param name="response">Response.</param>
+        /// 
+        /// <remarks>
+        /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
+        /// </remarks>
         public static bool ValidateResponse(string response)
         {
             if (response == "")
@@ -28,10 +37,21 @@ namespace CompropagoSdk.Tools
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-    return true;
+                return true;
             }
         }
 
+        /// <summary>
+        /// Get the specified url, auth and headers.
+        /// </summary>
+        /// <returns>The get.</returns>
+        /// <param name="url">URL.</param>
+        /// <param name="auth">Auth.</param>
+        /// <param name="headers">Headers.</param>
+        /// 
+        /// <remarks>
+        /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
+        /// </remarks>
         public static string Get(
             string url,
             Dictionary<string, string> auth = null,
@@ -49,6 +69,18 @@ namespace CompropagoSdk.Tools
             return res;
         }
 
+        /// <summary>
+        /// Post the specified url, data, auth and headers.
+        /// </summary>
+        /// <returns>The post.</returns>
+        /// <param name="url">URL.</param>
+        /// <param name="data">Data.</param>
+        /// <param name="auth">Auth.</param>
+        /// <param name="headers">Headers.</param>
+        /// 
+        /// <remarks>
+        /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
+        /// </remarks>
         public static string Post(
             string url,
             Dictionary<string, object> data = null,
@@ -68,6 +100,18 @@ namespace CompropagoSdk.Tools
             return res;
         }
 
+        /// <summary>
+        /// Put the specified url, data, auth and headers.
+        /// </summary>
+        /// <returns>The put.</returns>
+        /// <param name="url">URL.</param>
+        /// <param name="data">Data.</param>
+        /// <param name="auth">Auth.</param>
+        /// <param name="headers">Headers.</param>
+        /// 
+        /// <remarks>
+        /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
+        /// </remarks>
         public static string Put(
             string url,
             Dictionary<string, object> data = null,
@@ -87,6 +131,18 @@ namespace CompropagoSdk.Tools
             return res;
         }
 
+        /// <summary>
+        /// Delete the specified url, data, auth and headers.
+        /// </summary>
+        /// <returns>The delete.</returns>
+        /// <param name="url">URL.</param>
+        /// <param name="data">Data.</param>
+        /// <param name="auth">Auth.</param>
+        /// <param name="headers">Headers.</param>
+        /// 
+        /// <remarks>
+        /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
+        /// </remarks>
         public static string Delete(
             string url,
             Dictionary<string, object> data = null,
