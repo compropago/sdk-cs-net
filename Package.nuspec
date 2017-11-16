@@ -7,7 +7,7 @@
     <owners>ComproPago</owners>
     <licenseUrl>https://github.com/compropago/sdk-cs-net/blob/master/LICENSE.txt</licenseUrl>
     <projectUrl>https://github.com/compropago/sdk-cs-net</projectUrl>
-    <iconUrl>https://compropago.s3.amazonaws.com/store/logo/3725/Isotipo_ComproPago_Colores.png</iconUrl>
+    <iconUrl>https://avatars1.githubusercontent.com/u/5516611?s=200&v=4</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>SDK para el consumo de los servicios de ComproPago</description>
     <releaseNotes>
