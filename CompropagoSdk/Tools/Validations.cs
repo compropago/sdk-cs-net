@@ -44,12 +44,13 @@ namespace CompropagoSdk.Tools
         /// <summary>
         /// Validates the gateway.
         /// </summary>
+        /// <returns>bool</returns>
         /// <param name="client">Client.</param>
         /// 
         /// <remarks>
         /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
         /// </remarks>
-        public static void ValidateGateway(Client client)
+        public static bool ValidateGateway(Client client)
         {
             if (client == null)
             {
@@ -74,6 +75,8 @@ namespace CompropagoSdk.Tools
             {
                 throw new Exception("Client mode is diferent of keys mode");
             }
+
+            return true;
         }
     }
 }

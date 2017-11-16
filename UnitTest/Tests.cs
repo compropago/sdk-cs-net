@@ -21,8 +21,8 @@ namespace UnitTest
         [SetUp]
         public void Init()
         {
-            _publicKey = "pk_test_638e8b14112423a086";
-            _privateKey = "sk_test_9c95e149614142822f";
+            _publicKey = "pk_test_8781245a88240f9cf";
+            _privateKey = "sk_test_56e31883637446b1b";
             _mode = false;
             _orderInfo = new Dictionary<string, string>
             {
