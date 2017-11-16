@@ -2,7 +2,7 @@
 {
     public class Client
     {
-        public static string Version = "3.0.3.1";
+        public static string Version = "3.0.3.2";
 
         public static string ApiLiveUri = "https://api.compropago.com/v1/";
         public static string ApiSandboxUri = "https://api.compropago.com/v1/";

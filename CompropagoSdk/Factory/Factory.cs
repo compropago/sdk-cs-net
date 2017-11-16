@@ -208,7 +208,7 @@ namespace CompropagoSdk.Factory
 
             if (!source.ContainsKey("app_client_name"))
             {
-                source.Add("app_client_name", "sdk-cs");
+                source.Add("app_client_name", "sdkcs");
             }
 
             if (!source.ContainsKey("app_client_version"))

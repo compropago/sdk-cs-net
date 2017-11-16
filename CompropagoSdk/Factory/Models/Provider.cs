@@ -12,5 +12,6 @@
         public string image_large { get; set; }
         public double transaction_limit { get; set; }
         public int rank { get; set; }
+        public double commission { get; set; }
     }
 }
