@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.0.0
+MinimumVisualStudioVersion = 10.0.0.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompropagoSdk", "CompropagoSdk/CompropagoSdk.csproj", "{A3DB8F7A-7DDA-40D3-B525-6FBAF609B5E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{ED2448E5-E7EF-432D-9633-36198F75E055}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtraTest", "ExtraTest\ExtraTest.csproj", "{21F94598-7C96-48AB-9293-697360EED9C3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A3DB8F7A-7DDA-40D3-B525-6FBAF609B5E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3DB8F7A-7DDA-40D3-B525-6FBAF609B5E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3DB8F7A-7DDA-40D3-B525-6FBAF609B5E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3DB8F7A-7DDA-40D3-B525-6FBAF609B5E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED2448E5-E7EF-432D-9633-36198F75E055}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED2448E5-E7EF-432D-9633-36198F75E055}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED2448E5-E7EF-432D-9633-36198F75E055}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED2448E5-E7EF-432D-9633-36198F75E055}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21F94598-7C96-48AB-9293-697360EED9C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21F94598-7C96-48AB-9293-697360EED9C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21F94598-7C96-48AB-9293-697360EED9C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21F94598-7C96-48AB-9293-697360EED9C3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

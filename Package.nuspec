@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>ComproPago</id>
+    <version>3.0.3.1</version>
+    <authors>Eduardo Aguilar</authors>
+    <owners>ComproPago</owners>
+    <licenseUrl>https://github.com/compropago/sdk-cs-net/blob/master/LICENSE.txt</licenseUrl>
+    <projectUrl>https://github.com/compropago/sdk-cs-net</projectUrl>
+    <iconUrl>https://compropago.s3.amazonaws.com/store/logo/3725/Isotipo_ComproPago_Colores.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>SDK para el consumo de los servicios de ComproPago</description>
+    <releaseNotes>
+* Notes: Maintenance version
+    </releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>SDK C# ComproPago Payment Gateway</tags>
+
+    <dependencies>
+      <dependency id="Newtonsoft.Json" version="9.0.1" />
+    </dependencies>
+  </metadata>
+
+  <files>
+    <file src="CompropagoSdk/Client.cs" target="content/CompropagoSdk/Client.cs"/>
+    <file src="CompropagoSdk/Service.cs" target="content/CompropagoSdk/Service.cs"/>
+    <file src="CompropagoSdk/Tools/Http.cs" target="content/CompropagoSdk/Tools/Http.cs"/>
+    <file src="CompropagoSdk/Tools/Request.cs" target="content/CompropagoSdk/Tools/Request.cs"/>
+    <file src="CompropagoSdk/Tools/Validations.cs" target="content/CompropagoSdk/Tools/Validations.cs"/>
+    <file src="CompropagoSdk/Factory/Factory.cs" target="content/CompropagoSdk/Factory/Factory.cs"/>
+    <file src="CompropagoSdk/Factory/Models/CpOrderInfo.cs" target="content/CompropagoSdk/Factory/Models/CpOrderInfo.cs"/>
+    <file src="CompropagoSdk/Factory/Models/Customer.cs" target="content/CompropagoSdk/Factory/Models/Customer.cs"/>
+    <file src="CompropagoSdk/Factory/Models/EvalAuthInfo.cs" target="content/CompropagoSdk/Factory/Models/EvalAuthInfo.cs"/>
+    <file src="CompropagoSdk/Factory/Models/FeeDetails.cs" target="content/CompropagoSdk/Factory/Models/FeeDetails.cs"/>
+    <file src="CompropagoSdk/Factory/Models/GenericError.cs" target="content/CompropagoSdk/Factory/Models/GenericError.cs"/>
+    <file src="CompropagoSdk/Factory/Models/InstructionDetails.cs" target="content/CompropagoSdk/Factory/Models/InstructionDetails.cs"/>
+    <file src="CompropagoSdk/Factory/Models/Instructions.cs" target="content/CompropagoSdk/Factory/Models/Instructions.cs"/>
+    <file src="CompropagoSdk/Factory/Models/NewOrderInfo.cs" target="content/CompropagoSdk/Factory/Models/NewOrderInfo.cs"/>
+    <file src="CompropagoSdk/Factory/Models/OrderInfo.cs" target="content/CompropagoSdk/Factory/Models/OrderInfo.cs"/>
+    <file src="CompropagoSdk/Factory/Models/PlaceOrderInfo.cs" target="content/CompropagoSdk/Factory/Models/PlaceOrderInfo.cs"/>
+    <file src="CompropagoSdk/Factory/Models/Provider.cs" target="content/CompropagoSdk/Factory/Models/Provider.cs"/>
+    <file src="CompropagoSdk/Factory/Models/SmsData.cs" target="content/CompropagoSdk/Factory/Models/SmsData.cs"/>
+    <file src="CompropagoSdk/Factory/Models/SmsInfo.cs" target="content/CompropagoSdk/Factory/Models/SmsInfo.cs"/>
+    <file src="CompropagoSdk/Factory/Models/SmsObject.cs" target="content/CompropagoSdk/Factory/Models/SmsObject.cs"/>
+    <file src="CompropagoSdk/Factory/Models/Webhook.cs" target="content/CompropagoSdk/Factory/Models/Webhook.cs"/>
+  </files>
+</package>

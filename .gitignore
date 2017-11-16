@@ -1,0 +1,9 @@
+.idea/
+*.nupkg
+*.userprefs
+CompropagoSdk/bin/
+CompropagoSdk/obj/
+UnitTest/bin/
+UnitTest/obj/
+ExtraTest/bin/
+ExtraTest/obj/
