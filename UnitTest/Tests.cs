@@ -28,7 +28,7 @@ namespace UnitTest
             {
                 {"order_id", "ABC"},
                 {"order_name", "M4 sdk CS.NET"},
-                {"order_price", "5"},
+                {"order_price", "123"},
                 {"customer_name", "Christian"},
                 {"customer_email", "christian@compropago.com"},
                 {"payment_type", "OXXO"},
@@ -188,7 +188,7 @@ namespace UnitTest
 
                 var newOrder = client.Api.PlaceOrder(order);
 
-                res = (newOrder is NewOrderInfo) && newOrder.exp_date.Equals(epoch.ToString());
+                res = (newOrder is NewOrderInfo) && newOrder.expires_at.Equals(epoch);
             } 
             catch (Exception e) 
             {

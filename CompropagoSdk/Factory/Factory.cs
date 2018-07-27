@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using CompropagoSdk.Factory.Models;
 using Newtonsoft.Json;
+using System;
 
 namespace CompropagoSdk.Factory
 {
@@ -11,7 +12,7 @@ namespace CompropagoSdk.Factory
         /// </summary>
         /// <returns>The order info.</returns>
         /// <param name="source">Source.</param>
-        /// 
+        ///
         /// <remarks>
         /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
         /// </remarks>
@@ -32,7 +33,7 @@ namespace CompropagoSdk.Factory
         /// </summary>
         /// <returns>The customer.</returns>
         /// <param name="source">Source.</param>
-        /// 
+        ///
         /// <remarks>
         /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
         /// </remarks>
@@ -53,7 +54,7 @@ namespace CompropagoSdk.Factory
         /// </summary>
         /// <returns>The auth info.</returns>
         /// <param name="source">Source.</param>
-        /// 
+        ///
         /// <remarks>
         /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
         /// </remarks>
@@ -74,7 +75,7 @@ namespace CompropagoSdk.Factory
         /// </summary>
         /// <returns>The details.</returns>
         /// <param name="source">Source.</param>
-        /// 
+        ///
         /// <remarks>
         /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
         /// </remarks>
@@ -95,7 +96,7 @@ namespace CompropagoSdk.Factory
         /// </summary>
         /// <returns>The details.</returns>
         /// <param name="source">Source.</param>
-        /// 
+        ///
         /// <remarks>
         /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
         /// </remarks>
@@ -116,7 +117,7 @@ namespace CompropagoSdk.Factory
         /// </summary>
         /// <returns>The instructions.</returns>
         /// <param name="source">Source.</param>
-        /// 
+        ///
         /// <remarks>
         /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
         /// </remarks>
@@ -154,7 +155,7 @@ namespace CompropagoSdk.Factory
         /// </summary>
         /// <returns>The info.</returns>
         /// <param name="source">Source.</param>
-        /// 
+        ///
         /// <remarks>
         /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
         /// </remarks>
@@ -175,7 +176,7 @@ namespace CompropagoSdk.Factory
         /// </summary>
         /// <returns>The order info.</returns>
         /// <param name="source">Source.</param>
-        /// 
+        ///
         /// <remarks>
         /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
         /// </remarks>
@@ -225,7 +226,7 @@ namespace CompropagoSdk.Factory
         /// </summary>
         /// <returns>The provider.</returns>
         /// <param name="source">Source.</param>
-        /// 
+        ///
         /// <remarks>
         /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
         /// </remarks>
@@ -246,7 +247,7 @@ namespace CompropagoSdk.Factory
         /// </summary>
         /// <returns>The providers.</returns>
         /// <param name="source">Source.</param>
-        /// 
+        ///
         /// <remarks>
         /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
         /// </remarks>
@@ -267,7 +268,7 @@ namespace CompropagoSdk.Factory
         /// </summary>
         /// <returns>The data.</returns>
         /// <param name="source">Source.</param>
-        /// 
+        ///
         /// <remarks>
         /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
         /// </remarks>
@@ -288,7 +289,7 @@ namespace CompropagoSdk.Factory
         /// </summary>
         /// <returns>The info.</returns>
         /// <param name="source">Source.</param>
-        /// 
+        ///
         /// <remarks>
         /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
         /// </remarks>
@@ -309,7 +310,7 @@ namespace CompropagoSdk.Factory
         /// </summary>
         /// <returns>The object.</returns>
         /// <param name="source">Source.</param>
-        /// 
+        ///
         /// <remarks>
         /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
         /// </remarks>
@@ -330,7 +331,7 @@ namespace CompropagoSdk.Factory
         /// </summary>
         /// <returns>The webhook.</returns>
         /// <param name="source">Source.</param>
-        /// 
+        ///
         /// <remarks>
         /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
         /// </remarks>
@@ -351,7 +352,7 @@ namespace CompropagoSdk.Factory
         /// </summary>
         /// <returns>The webhooks.</returns>
         /// <param name="source">Source.</param>
-        /// 
+        ///
         /// <remarks>
         /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
         /// </remarks>
