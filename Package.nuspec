@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>ComproPago</id>
-    <version>3.0.3.1</version>
+    <version>4.0.0.1</version>
     <authors>Eduardo Aguilar</authors>
     <owners>ComproPago</owners>
     <licenseUrl>https://github.com/compropago/sdk-cs-net/blob/master/LICENSE.txt</licenseUrl>
