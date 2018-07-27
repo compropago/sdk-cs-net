@@ -2,7 +2,7 @@
 {
     public class Client
     {
-        public static string Version = "3.0.3.1";
+        public static string Version = "4.0.0.1";
 
         public static string ApiLiveUri = "https://api.compropago.com/v1/";
         public static string ApiSandboxUri = "https://api.compropago.com/v1/";
@@ -22,7 +22,7 @@
         /// <param name="publicKey">Public key.</param>
         /// <param name="privateKey">Private key.</param>
         /// <param name="live">If set to <c>true</c> live.</param>
-        /// 
+        ///
         /// <remarks>
         /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
         /// </remarks>
@@ -41,7 +41,7 @@
         /// Gets the user.
         /// </summary>
         /// <returns>The user.</returns>
-        /// 
+        ///
         /// <remarks>
         /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
         /// </remarks>
@@ -54,7 +54,7 @@
         /// Gets the pass.
         /// </summary>
         /// <returns>The pass.</returns>
-        /// 
+        ///
         /// <remarks>
         /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
         /// </remarks>

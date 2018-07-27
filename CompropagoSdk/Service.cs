@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using CompropagoSdk.Factory.Models;
 using CompropagoSdk.Tools;
@@ -26,15 +27,15 @@ namespace CompropagoSdk
         /// Gets the auth.
         /// </summary>
         /// <returns>The auth Dictionary.</returns>
-        /// 
+        ///
         /// <remarks>
         /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
         /// </remarks>
         private Dictionary<string, string> getAuth()
         {
-            return new Dictionary<string, string> { 
-                { "user", _client.GetUser() }, 
-                { "pass", _client.GetPass() } 
+            return new Dictionary<string, string> {
+                { "user", _client.GetUser() },
+                { "pass", _client.GetPass() }
             };
         }
 
@@ -44,7 +45,7 @@ namespace CompropagoSdk
         /// <returns>The providers.</returns>
         /// <param name="limit">Limit.</param>
         /// <param name="currency">Currency.</param>
-        /// 
+        ///
         /// <remarks>
         /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
         /// </remarks>
@@ -62,6 +63,8 @@ namespace CompropagoSdk
                 url += "&currency=" + currency;
             }
 
+            Console.WriteLine(url);
+
             var response = Request.Get(url, getAuth());
 
             return Factory.Factory.ListProviders(response);
@@ -72,7 +75,7 @@ namespace CompropagoSdk
         /// </summary>
         /// <returns>The order.</returns>
         /// <param name="orderId">Order identifier.</param>
-        /// 
+        ///
         /// <remarks>
         /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
         /// </remarks>
@@ -87,7 +90,7 @@ namespace CompropagoSdk
         /// </summary>
         /// <returns>The order.</returns>
         /// <param name="order">Order.</param>
-        /// 
+        ///
         /// <remarks>
         /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
         /// </remarks>
@@ -119,7 +122,7 @@ namespace CompropagoSdk
         /// <returns>The sms instructions.</returns>
         /// <param name="phone">Phone.</param>
         /// <param name="orderId">Order identifier.</param>
-        /// 
+        ///
         /// <remarks>
         /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
         /// </remarks>
@@ -138,7 +141,7 @@ namespace CompropagoSdk
         /// Lists the webhooks.
         /// </summary>
         /// <returns>The webhooks.</returns>
-        /// 
+        ///
         /// <remarks>
         /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
         /// </remarks>
@@ -153,7 +156,7 @@ namespace CompropagoSdk
         /// </summary>
         /// <returns>The webhook.</returns>
         /// <param name="url">URL.</param>
-        /// 
+        ///
         /// <remarks>
         /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
         /// </remarks>
@@ -174,7 +177,7 @@ namespace CompropagoSdk
         /// <returns>The webhook.</returns>
         /// <param name="webhookId">Webhook identifier.</param>
         /// <param name="url">URL.</param>
-        /// 
+        ///
         /// <remarks>
         /// Author: Eduardo Aguilar <dante.aguilar41@gmail.com>.
         /// </remarks>

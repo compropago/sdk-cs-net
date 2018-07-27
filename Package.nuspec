@@ -31,6 +31,7 @@
     <file src="CompropagoSdk/Factory/Models/CpOrderInfo.cs" target="content/CompropagoSdk/Factory/Models/CpOrderInfo.cs"/>
     <file src="CompropagoSdk/Factory/Models/Customer.cs" target="content/CompropagoSdk/Factory/Models/Customer.cs"/>
     <file src="CompropagoSdk/Factory/Models/EvalAuthInfo.cs" target="content/CompropagoSdk/Factory/Models/EvalAuthInfo.cs"/>
+    <file src="CompropagoSdk/Factory/Models/Exchange.cs" target="content/CompropagoSdk/Factory/Models/Exchange.cs"/>
     <file src="CompropagoSdk/Factory/Models/FeeDetails.cs" target="content/CompropagoSdk/Factory/Models/FeeDetails.cs"/>
     <file src="CompropagoSdk/Factory/Models/GenericError.cs" target="content/CompropagoSdk/Factory/Models/GenericError.cs"/>
     <file src="CompropagoSdk/Factory/Models/InstructionDetails.cs" target="content/CompropagoSdk/Factory/Models/InstructionDetails.cs"/>

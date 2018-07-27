@@ -7,3 +7,5 @@ UnitTest/bin/
 UnitTest/obj/
 ExtraTest/bin/
 ExtraTest/obj/
+.DS_Store
+.vs/

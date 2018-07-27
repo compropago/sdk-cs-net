@@ -6,5 +6,6 @@
         public string url { get; set; }
         public string mode { get; set; }
         public string status { get; set; }
+        public string type { get; set; }
     }
 }

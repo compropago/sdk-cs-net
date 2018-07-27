@@ -70,6 +70,7 @@
     <Compile Include="Tools\Http.cs" />
     <Compile Include="Tools\Request.cs" />
     <Compile Include="Tools\Validations.cs" />
+    <Compile Include="Factory\Models\Exchange.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
